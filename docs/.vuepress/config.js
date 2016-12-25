@@ -38,7 +38,8 @@ module.exports = {
                         'markdown',
                         'nginx',
                         'docker',
-                        'other'
+                        'other',
+                        'myload'
                     ]
                 }
             ]
