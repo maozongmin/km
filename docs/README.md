@@ -2,7 +2,7 @@
 layout: Homepage
 description: 'The biography and information about me.'
 avatar: /profile.jpg
-head: 'Harry Potter'
+head: 'maozongmin'
 info: 'Student at Hogwarts School'
 interests: 'Interests: Quidditch and Wizard chess.'
 socials:
