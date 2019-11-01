@@ -1,4 +1,4 @@
-# jenkins 常用命令
+# jenkins
 
 ```
 cmd:
@@ -17,7 +17,7 @@ linux:
 ```
 
 
-# jenkins 手把手搭建
+## jenkins 手把手搭建
 
 > <a href="https://github.com/muyinchen/woker/blob/master/集成测试环境搭建/手把手教你搭建Jenkins+Github持续集成环境.md" target="_blank">手把手教你搭建Jenkins+Github持续集成环境</a>  
 

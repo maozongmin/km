@@ -71,5 +71,84 @@
     mv test.log test1.txt // 重命名
     mv test.log testdir // 将test.log移动到testdir目录中
 
-0017734cd06a4da19485b2a4b1f70335
-https://gitee.com/maozongmin/test123.git
+### 压缩解压文件
+    
+       下载到了一份tar.xz结尾的压缩文件，如下：
+    ```
+        $xz -d ***.tar.xz
+
+        $tar -xvf  ***.tar
+    ```
+
+      可以看到这个压缩包也是打包后再压缩，外面是xz压缩方式，里层是tar打包方式。
+      补充：目前可以直接使用 tar xvJf  ***.tar.xz来解压
+
+## 安装node && npm
+
+1.先下载安装包到 /usr/local/tool/nodejs路径下
+```
+wget https://npm.taobao.org/mirrors/node/v8.0.0/node-v8.0.0-linux-x64.tar.xz
+```
+2.下载完成后解压
+```
+tar -xvf  node-v8.0.0-linux-x64.tar.xz
+```
+3.重命名为node
+```
+mv node-v8.1.4-linux-x64 node
+```
+4.配置环境变量
+```
+vim /etc/profile
+```
+5.在文件的最后添加
+```
+#set for nodejs  
+export NODE_HOME=/usr/local/tool/nodejs/node  
+export PATH=$NODE_HOME/bin:$PATH
+```
+6.保存退出后执行更新命令
+```
+source /etc/profile
+```
+如果不生效，重启系统就可以
+
+7.检测node和npm是否安装成功显示版本号则安装成功
+```
+# node -v
+v8.0.0
+# npm -v
+5.0.0
+```
+
+注：现在 node 和 npm 还不能全局使用，需要做链接 （路径以自己实际情况为准）
+```
+ln -s /usr/local/tool/nodejs/node/bin/node /usr/local/bin/node 
+ln -s /usr/local/tool/nodejs/node/bin/npm  /usr/local/bin/npm 
+```
+测试是否可以在任何目录下执行 node 和 npm 命令
+```
+# cd /
+# node -v
+v8.0.0
+```
+
+9.npm配置全局路径  
+```
+# //配置全局安装路径和缓存路径
+cd /usr/local/tool/nodejs
+mkdir node_global
+mkdir node_cache
+npm config set prefix "node_global"
+npm config set cache "node_cache"
+```
+
+10.npm的包安装分为本地安装（local）、全局安装（global）两种
+
+> 不加-g的话默认是使用本地安装，npm会在执行命令的当前路径下下载安装模块组件。  
+> 加上-g的话是使用全局安装，npm会在设置的全局路径下安装。方便统一管理。
+
+```
+npm install grunt # 本地安装
+npm1 install -g grunt-cli # 全局安装
+```

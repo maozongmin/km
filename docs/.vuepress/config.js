@@ -10,7 +10,7 @@ module.exports = {
       { text: "Home", link: "/" },
       { text: "Projects", link: "/projects/" },
       { text: "Guide", link: "/guide/" },
-      { text: "足迹", link: "/word/" },
+      { text: "word", link: "/word/" },
       { text: "GitHub", link: "https://github.com/maozongmin/word" }
     ],
     sidebar: {
@@ -26,16 +26,22 @@ module.exports = {
                 ]
             }
         ],
-      '/word':  {
-            title: 'km',
-            collapsable: false,
-            children: [
-                '',
-                'getting-started',
-                'customize',
-                'advanced',
-            ]
-        }
+      '/word/':  [
+            {
+                title: 'km',
+                collapsable: false,
+                children: [
+                    '',
+                    'css',
+                    'git',
+                    'jenkins',
+                    'linux',
+                    'markdown',
+                    'nginx配置https',
+                    'nginx常用',
+                ]
+            }
+        ]
     },
     lastUpdated: 'Last Updated'
   },
