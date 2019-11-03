@@ -8,9 +8,9 @@ module.exports = {
   themeConfig: {
     nav: [
       { text: "Home", link: "/" },
-      { text: "Projects", link: "/projects/" },
-      { text: "Guide", link: "/guide/" },
-      { text: "word", link: "/word/" },
+      // { text: "Projects", link: "/projects/" },
+      // { text: "Guide", link: "/guide/" },
+      { text: "导航", link: "/word/" },
       { text: "GitHub", link: "https://github.com/maozongmin/word" }
     ],
     sidebar: {
