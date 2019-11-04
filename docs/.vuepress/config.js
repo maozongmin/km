@@ -6,6 +6,7 @@ module.exports = {
   dest: "./dist",
 
   themeConfig: {
+    displayAllHeaders: true,
     nav: [
       { text: "Home", link: "/" },
       // { text: "Projects", link: "/projects/" },
@@ -26,7 +27,7 @@ module.exports = {
                 ]
             }
         ],
-      '/word/':  [
+        '/word/':  [
             {
                 title: 'km',
                 collapsable: false,
@@ -41,7 +42,8 @@ module.exports = {
                     'nginx常用',
                 ]
             }
-        ]
+        ],
+
     },
     lastUpdated: 'Last Updated'
   },
