@@ -24,4 +24,4 @@ linux:
 jenkins配置页面：http://localhost:8080/pluginManager/advanced
 
 如果用的github是私有库，那么配置Repository URL的时候需要加上名称：如下
-https://maozongmin@github.com/maozongmin/work.git
+https://maozongmin@github.com/maozongmin/km.git

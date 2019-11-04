@@ -16,8 +16,8 @@
     service nginx start // 启动
     service nginx restart // 重启
 ```
-
-## 如果无法关闭ngixn可以试下下列方案
+## nginx无法关闭
+### 如果无法关闭ngixn可以试下下列方案
 ```
     命令行输入： taskkill /F /IM nginx.exe > nul
 ```

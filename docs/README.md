@@ -4,7 +4,7 @@ description: 'The biography and information about me.'
 avatar: /profile.jpg
 head: 'maozongmin'
 info: '前端工程师'
-interests: 'Interests: play games and codeing.'
+interests: 'Interests: play games and coding.'
 socials:
 - title: github
   link: https://github.com/maozongmin

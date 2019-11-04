@@ -14,22 +14,24 @@ module.exports = {
       { text: "导航", link: "/word/" },
       { text: "GitHub", link: "https://github.com/maozongmin/word" }
     ],
+    displayAllHeaders: true,
+    sidebarDepth: 1,
     sidebar: {
-      '/guide/': [
-            {
-                title: 'guide',
-                collapsable: false,
-                children: [
-                '',
-                'getting-started',
-                'customize',
-                'advanced',
-                ]
-            }
-        ],
+        // '/guide/': [
+        //     {
+        //         title: 'guide',
+        //         collapsable: false,
+        //         children: [
+        //         '',
+        //         'getting-started',
+        //         'customize',
+        //         'advanced',
+        //         ]
+        //     }
+        // ],
         '/word/':  [
             {
-                title: 'km',
+                title: '导航',
                 collapsable: false,
                 children: [
                     '',
