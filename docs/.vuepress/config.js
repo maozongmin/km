@@ -17,18 +17,6 @@ module.exports = {
     displayAllHeaders: true,
     sidebarDepth: 1,
     sidebar: {
-        // '/guide/': [
-        //     {
-        //         title: 'guide',
-        //         collapsable: false,
-        //         children: [
-        //         '',
-        //         'getting-started',
-        //         'customize',
-        //         'advanced',
-        //         ]
-        //     }
-        // ],
         '/word/':  [
             {
                 title: '导航',
@@ -40,7 +28,6 @@ module.exports = {
                     'jenkins',
                     'linux',
                     'markdown',
-                    'nginx配置https',
                     'nginx常用',
                 ]
             }

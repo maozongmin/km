@@ -9,7 +9,7 @@
     export no_proxy=github.com      // 取消对github.com代理
     git checkout dev                // 切换到dev分支
     git log                         // 显示git日志
-    git pull origin master          // 拉取主分支最新代码
+    git pull origin master          // 拉取主分支最新代码 到 当前分支
 ```
 
 ## Git 全局设置
@@ -36,7 +36,7 @@ git remote add origin https://github.com/maozongmin/km 这里的网址就是仓�
 ```
     cd existing_folder
     git init
-    git remote add origin http://git.code.oa.com/v_zmmao/km.git
+    git remote add origin https://github.com/maozongmin/km.git
     git add .
     git commit -m "init"
     git push -u origin master
