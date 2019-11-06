@@ -43,7 +43,7 @@ Props: ['pro1', 'pro2']
 ```
 1.  netstat -ano //查看所有端口
 2.  http协议里的某个进程占用了80，但是在任务管理器显示的是System,最后发现是http协议的某个进程占用（发现的过程也是在网上搜索得知道，这个进程显式停止是无法停止的，只有在cmd.exe里使用net stop http来停止
-3.Sc config http start = disabled
+3.  Sc config http start = disabled
 ```
 
 ## package.json 设置环境变量

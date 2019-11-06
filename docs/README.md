@@ -1,6 +1,7 @@
 ---
 layout: Homepage
-description: 'The biography and information about me.'
+description: 'WEB前端开发,前端开发博客专注于前端开发,分享前端开发资源和前端开发技术资讯等,maozongmin'
+keywords: '前端开发,前端博客,前端技术,maozongmin'
 avatar: /profile.jpg
 head: 'maozongmin'
 info: '前端工程师'
@@ -26,5 +27,3 @@ actions:
 
 footer: Made with ♥ by maozongmin. Powered by VuePress
 ---
-
-主要沉淀日常前端开发经验。不积跬步，无以至千里、不积细流，无以成江海 :dizzy:
