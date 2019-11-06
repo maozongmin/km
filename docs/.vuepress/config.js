@@ -24,11 +24,15 @@ module.exports = {
                 children: [
                     '',
                     'css',
+                    'javascript',
+                    'node',
+                    'vue',
                     'git',
                     'jenkins',
                     'linux',
                     'markdown',
                     'nginx常用',
+                    'other',
                 ]
             }
         ],
