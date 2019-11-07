@@ -23,6 +23,7 @@ module.exports = {
                 collapsable: false,
                 children: [
                     '',
+                    'html',
                     'css',
                     'javascript',
                     'node',
