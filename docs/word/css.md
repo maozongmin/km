@@ -33,6 +33,13 @@ ie下展示不开，为一条线
 解决方法：body高设置auto，使用js获取屏高，赋予给需要全屏的页面
 
 ## 多行显示省略号
+::: tip 
+```
+text-overflow:clip       //修剪文本。
+text-overflow:ellipsis   //显示省略符号来代表被修剪的文本。
+text-overflow:string     //使用给定的字符串来代表被修剪的文本。
+```
+:::
 1. 问题1：  
 f-hide-col-1最好也需要设置高度，
 否则在某种特定情况下，高度不同会导致排版错了
@@ -84,3 +91,51 @@ $(".test").on("touchmove",function(event){
 border: 2px solid red  |边框，可圆可方。占据页面空间  
 outline：2px solid red|不占据页面空间。只有firefox支持圆角-moz-outline-radius，其余浏览器不支持  
 box-shadow|根据元素的扩展阴影，不占据页面空间。可圆可方  
+
+## css3 兼容文档
+“支持”代表不在需要前缀（以下资料来自https://caniuse.com和css3文档手册）
+“主流浏览器”代表“QQ浏览器，搜狗浏览器，360，edge最新版”
+* line-clamp  
+ie、edge、firefox不支持    其余的版本需要前缀
+* Text-overflow  
+firefox2.0-6不支持 其余均支持
+* Display:box、box-orient   
+ie6-11不支持  其余的版本需要前缀
+* Border-radius  
+ ie6-8不支持  ie9+、chrome5+、firefox4+、主流浏览器支持  其余的低版本需要前缀
+* Transform   
+ie6-9、 firefox 2.0-3.0不支持  ie10+、firefox16+、chrome36+、主流浏览器支持  其余旧版本需要前缀
+* Transition  
+ie6-10不支持  ie11+、firefox、chrome、最新版主流浏览器支持
+* Box-sizing  
+ ie6-7不支持  ie8+、firefox29+、chrome9+、主流浏览器支持  其余旧版本需要前缀
+* Box-shadow  
+ie6-8、 firefox 2.0-3.0不支持  ie9+、firefox4+、chrome10+、主流浏览器支持  其余旧版本需要前缀
+* Calc  
+ie6-8、firefox2.0-3.6、chrome4.0-18不支持  ie9+、firefox16+、chrome26+、主流浏览器支持  其余旧版本需要前缀
+* Scrollbar  
+包含scrollbar、scrollbar-button、scrollbar-track、scrollbar-track-piece、scrollbar-thumb、scrollbar-corner、resize）firefox、edge不支持  ie6+支持  其余需要前缀
+* Animation  
+ie6-9、firefox2.0-4.0不支持  ie10+、chrome43+、firefox16+、主流浏览器支持  其余的低版本需要前缀 
+* ::placeholder  
+ie6-9、firefox2.0-3.6不支持、chrome57+、firefox51+、主流浏览器支持  其余的低版本需要前缀
+* Filter  
+ ie6-11、edge12、firefox2.0-3.5、chrome4-17不支持 edge13+、 chrome53+、firefox35+、主流浏览器支持  其余的低版本需要前缀
+* Linear-gradient  
+ie6-9、edge12、firefox2.0-3.5不支持  ie10+、chrome26+、firefox16+、主流浏览器支持  其余的低版本需要前缀 
+* device-pixel-ratio  
+ie6-8、firefox2-3不支持  firefox3.5+、chrome29+、主流浏览器支持  其余的低版本需要前缀
+* font-smoothing  
+ie6-11、edge、firefox2-24、chrome4.0不支持   firefox25+、chrome5+、主流浏览器均需要前缀
+* Flex  
+ie6-9不支持  ie11+、chrome21+、firefox28+、主流浏览器支持  其余的低版本需要前缀
+* Flex-basis：content  
+暂时所有浏览器不支持
+* display:flex、display:inline-flex、align-content、align-items、align-self、justify-content、order.   
+ie6-9不支持  ie11+、chrome29+、firefox28+、主流浏览器支持  其余的低版本需要前缀 .温馨提示：ie10需前缀
+* background、background-origin、background-clip、background-size  
+ie6-8，firefox2-3.5不支持  ie9+、chrome、firefox4+、主流浏览器支持
+* background-position  
+ie6-8，firefox2.0-12，chrome4.0-24不支持  其余版本都支持
+* background-repeat 中的round和space  
+ ie6-8、firefox2-48、chrome4-31不支持 ie9+、chrome32、firefox49+、主流浏览器支持 
