@@ -33,8 +33,12 @@ ie下展示不开，为一条线
 解决方法：body高设置auto，使用js获取屏高，赋予给需要全屏的页面
 
 ## 多行显示省略号
+1. 问题1：  
 f-hide-col-1最好也需要设置高度，
 否则在某种特定情况下，高度不同会导致排版错了
+2. 问题2：  
+inline-block和block同级。同时使用多行省略的情况下，
+iphone手机端会出现占位空白
 ```
 /*文字超过1行显示省略号*/
 .f-hide-col-1 {
@@ -52,5 +56,31 @@ f-hide-col-1最好也需要设置高度，
 ```
 
 ## 二维码无法识别
-手机端的二维码放background识别不了，需要使用img展示
+手机端的二维码放background识别不了，需要使用img展示  
+2或2张以上二维码无法在同一视窗被识别，识别时隐藏掉干扰项
 
+## swiper嵌套无法滚动
+```
+swiper内页不能滚动的问题。
+解决方法：
+$(".test").on("touchmove",function(event){
+    event.stopPropagation();
+});
+需滚动的元素取消冒泡
+
+```
+
+## overflow 如何不生效
+父级元素不设置position:relative;子元素设置position:absolute;left:0;top不写，  
+那么绝对定位是相对往上层级寻找有相对定位的祖先级靠左排布，其中父级元素的overflow:hidden对子元素不受限制。
+
+## css邮件
+邮件中不能使用style和iframe嵌入。  
+能使用内联样式
+
+## 边框
+属性|描述
+---|---
+border: 2px solid red  |边框，可圆可方。占据页面空间  
+outline：2px solid red|不占据页面空间。只有firefox支持圆角-moz-outline-radius，其余浏览器不支持  
+box-shadow|根据元素的扩展阴影，不占据页面空间。可圆可方  
