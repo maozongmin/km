@@ -5,7 +5,7 @@ module.exports = {
   head: [["link", { rel: "icon", href: `/logo.png` }]],
   base: "/",
   dest: "./dist",
-
+  // theme: '@vuepress/vue',
   themeConfig: {
     displayAllHeaders: true,
     nav: [
@@ -50,7 +50,8 @@ module.exports = {
     config: md => {
       md.use(require("markdown-it-katex"));
     }
-  }
+  },
+  plugins: [['@vuepress/back-to-top',true]]
 };
 
 // function genSidebarConfig (title) {

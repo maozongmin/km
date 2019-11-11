@@ -150,5 +150,16 @@ test
 test
 ```
 
+## 角标
+#### Vue <Badge text="2.5.0+"/> 
+#### Vue <Badge text="beta" type="warn" vertical="top"/> 
+#### Vue <Badge text="废弃" vertical="middle" type="error"/>
+
+```
+#### Vue <Badge text="2.5.0+"/> 
+#### Vuex <Badge text="beta" type="warn" vertical="top"/> 
+#### Vue-Resource<Badge text="废弃" vertical="middle" type="error"/>
+```
+
 ## Markdown 拓展
 [Markdown 拓展](https://vuepress.vuejs.org/zh/guide/markdown.html)
