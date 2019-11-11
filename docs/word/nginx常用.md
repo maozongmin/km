@@ -1,5 +1,5 @@
 # nginx常用命令
-```
+``` nginx
     start nginx         # 启动
     nginx -s stop       # 快速关闭Nginx，可能不保存相关信息，并迅速终止web服务。
     nginx -s quit       # 平稳关闭Nginx，保存相关信息，有安排的结束web服务。
@@ -8,13 +8,13 @@
     nginx -c filename   # 为 Nginx 指定一个配置文件，来代替缺省的。
     nginx -t            # 配置文件检测是否正确
 
-    nginx -v            显示 nginx 的版本。
+    nginx -v            # 显示 nginx 的版本。
 
-    nginx -V            显示 nginx 的版本，编译器版本和配置参数。
+    nginx -V            # 显示 nginx 的版本，编译器版本和配置参数。
 
-    service nginx stop // 停止
-    service nginx start // 启动
-    service nginx restart // 重启
+    service nginx stop  # 停止
+    service nginx start # 启动
+    service nginx restart   # 重启
 ```
 ## nginx无法关闭
 ### 如果无法关闭ngixn可以试下下列方案
@@ -25,7 +25,7 @@
 ## 403无权限问题
     将整个虚拟主机开启目录流量  
     在location 中加上autoindex为on; 
-```
+``` nginx
     location / {
             root   C:\xampp\htdocs;
             index  index.html index.htm;
@@ -34,14 +34,14 @@
 ```
 
 ## 代理到8080端口（proxy_pass）
-```
+``` nginx
 location / {
     proxy_pass http://127.0.0.1:8080;
 }
 ```
 ## nginx 配置 https
 xxx.pem、xxx.key为证书，需自行下载
-```
+``` nginx
 server {
     listen 443; 
     server_name www.xxx.com; // 你的域名
@@ -65,7 +65,7 @@ server {
 ::: warning 
 要新加一个server 不要写在listen 443里面，写在里面就一直是https重定向到https，进入死循环。
 :::
-```
+``` nginx
 server {
     listen 80;
     server_name www.xxx.com;// 你的域名

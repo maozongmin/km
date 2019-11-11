@@ -18,3 +18,45 @@
 </ul>     
 ```
 
+## 图片alt
+每个图片的alt都应该写上
+
+## 全屏高度自动撑满
+精华就是下列代码中高亮的部分
+``` html {19,20,21}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>autoHeight demo</title>
+		<style>
+		html,
+		body {
+			height: 100%;
+		}
+		* {
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+		}
+		div {
+			border: 1px solid red;
+		}
+		.main {
+			min-height: 100%;
+			padding: 40px 0;
+			margin: -40px 0;
+		}
+		.header,
+		.footer {
+			height: 40px;
+			line-height: 40px;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="header">top</div>
+		<div class="main"></div>
+		<div class="footer">footer</div>
+	</body>
+</html>
+```

@@ -45,6 +45,7 @@ module.exports = {
 
   markdown: {
     // options for markdown-it-anchor
+    lineNumbers: true,
     anchor: { permalink: false },
     config: md => {
       md.use(require("markdown-it-katex"));

@@ -1,19 +1,19 @@
 # javascript
 ## 数组、字符串互转
 数组转json字符串
-```
+``` js
 var arr = [1,2,3, { a : 1 } ];
 JSON.stringify( arr );
 ```
 json字符串转数组
-```
+``` js
 var jsonStr = '[1,2,3,{"a":1}]';
 JSON.parse( jsonStr );
 ```
 ## Object.assign
 > 合并对象
 
-```
+``` js
 Object.assign(obj1, obj2, obj3);
 ```
 

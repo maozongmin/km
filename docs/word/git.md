@@ -3,13 +3,18 @@
 
 ## 常用命令
 ```
-    env                             // 查看环境变量
-    env |grep proxy                 // 查看代理
-    git config -l                   // 查看配置列表
-    export no_proxy=github.com      // 取消对github.com代理
-    git checkout dev                // 切换到dev分支
-    git log                         // 显示git日志
-    git pull origin master          // 拉取主分支最新代码 到 当前分支
+    env                                                     // 查看环境变量
+    env |grep proxy                                         // 查看代理
+    git config -l                                           // 查看配置列表
+    git config --global https.proxy http://127.0.0.1:1080   // 设置http代理
+    git config --global https.proxy https://127.0.0.1:1080  // 设置https代理
+    git config --global --unset http.proxy                  // 取消http代理
+    git config --global --unset https.proxy                 // 取消https代理
+    export no_proxy=github.com                              // 取消对github.com代理
+    git checkout dev                                        // 切换到dev分支
+    git log                                                 // 显示git日志
+    git pull origin master                                  // 拉取主分支最新代码 到 当前分支
+    git push -u origin master                               // 推送上git
 ```
 
 ## Git 全局设置
