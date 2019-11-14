@@ -11,8 +11,8 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@vuepress/plugin-back-to-top": "^1.0.0-rc.1",
-    "vuepress": "^0.14.5"
+    "@vuepress-reco/vuepress-plugin-back-to-top": "^1.0.3",
+    "vuepress": "^1.2.0"
   },
   "dependencies": {
     "markdown-it": "^8.4.1",
