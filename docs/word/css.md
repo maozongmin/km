@@ -191,6 +191,32 @@ demo:
 ## 移动端控件样式重置
 button、checkbox、radio、reset、submit等 这些控件都可以使用，不过需要注意在Android和ios的手机上，控件的样式会所有不同，如果想完全掌控样式，需要reset一下-webkit-appearance:none，之后在设置自己需要的样式。
 
+## 如何移除 input type="number" 时浏览器自带的上下箭头？
+``` css
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+```
+
+## 命名规范
+:::tip 规范
+重置和默认：reset + base
+
+布局(g-) 例如头部，尾部，主体，侧栏等
+
+模块(m-) 较大整体，如登录注册，搜索等
+
+元件(u-) 不可再分个体，例如按钮，input框等
+
+功能(f-) 使用频率较高样式，例如清除浮动
+
+皮肤(s-) 例如文字色，背景色，边框色等
+
+状态(z-) 例如hover，选中等
+
+j- 专门用于js获取节点，勿占用
+:::
 ## css3 兼容文档
 “支持”代表不在需要前缀（以下资料来自https://caniuse.com和css3文档手册）
 “主流浏览器”代表“QQ浏览器，搜狗浏览器，360，edge最新版”

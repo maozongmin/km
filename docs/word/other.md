@@ -7,8 +7,8 @@ chcp 65001  //设置UTF-8代码页
 chcp 437    //设置成美国英语  
 ::: 
 
-## swiper在ios点击有蒙版
-取消swiper点击有灰色蒙版的状态
+## swiper在ios点击有蒙层
+取消swiper点击有灰色蒙层的状态
 .swiper-container,.swiper-wrapper,.swiper-slide {
     -webkit-tap-highlight-color:transparent !important;
 }
