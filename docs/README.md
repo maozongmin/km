@@ -1,10 +1,11 @@
 ---
+home: true
 layout: Homepage
 description: 'WEB前端开发,前端开发博客专注于前端开发,分享前端开发资源和前端开发技术资讯等,maozongmin'
 keywords: '前端开发,前端博客,前端技术,maozongmin'
 avatar: /profile.jpg
 head: 'maozongmin'
-info: '前端工程师'
+info: '前端攻城狮'
 interests: 'Interests: play games and coding.'
 socials:
 - title: github
