@@ -53,10 +53,10 @@
 图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加
 
 egg: 
-![图片测试alt](wx.jpg "图片测试title")
+![图片测试alt](./wx.jpg "图片测试title")
 ```
 
-![图片测试alt](wx.jpg "图片测试title")
+![图片测试alt](./wx.jpg "图片测试title")
 
 ## 超链接 
 > (默认当前页打开，需新开窗口打开可以用a标签)
@@ -163,3 +163,6 @@ test
 
 ## Markdown 拓展
 [Markdown 拓展](https://vuepress.vuejs.org/zh/guide/markdown.html)
+
+### 不同语言代码高亮
+<a href="https://prismjs.com/#supported-languages">不同语言代码高亮支持列表</a>

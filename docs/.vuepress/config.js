@@ -41,6 +41,7 @@ module.exports = {
                         "linux",
                         "markdown",
                         "nginx",
+                        "docker",
                         "other"
                     ]
                 }
