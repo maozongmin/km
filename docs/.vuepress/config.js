@@ -58,5 +58,7 @@ module.exports = {
             md.use(require("markdown-it-katex"));
         }
     },
-    plugins: ["@vuepress-reco/vuepress-plugin-back-to-top"]
+    plugins: [
+        "@vuepress-reco/vuepress-plugin-back-to-top"
+    ]
 };

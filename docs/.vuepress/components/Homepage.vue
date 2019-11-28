@@ -46,6 +46,7 @@
       <div class="footer" v-if="data.footer">
         {{ data.footer }}
       </div>
+      <valine></valine>
     </div>
   </div>
 </template>
