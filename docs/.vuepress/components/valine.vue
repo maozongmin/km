@@ -6,11 +6,10 @@
 export default {
     name: 'Valine',
     mounted: function () {
-        // require window 
         const Valine = require('valine');
         if (typeof window !== 'undefined') {
             this.window = window
-            // window.AV = require('leancloud-storage')
+            window.AV = require('leancloud-storage')
         }
 
         new Valine({
@@ -19,7 +18,7 @@ export default {
             appKey: 'U4Arzom9kOqJRMNhhu12r49K',
             notify: false,
             verify: false,
-            avatar: 'gg',
+            avatar: 'mm',
             placeholder: '风一样的少年'
         });
     },

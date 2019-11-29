@@ -10,9 +10,10 @@ module.exports = {
     head: [["link", { rel: "icon", href: `/logo.jpg` }]],
     base: "/",
     dest: "./dist",
-    // theme: '@vuepress/vue',
+    extend: '@vuepress/theme-default',
     themeConfig: {
         displayAllHeaders: true,
+        smoothScroll: true,
         nav: [
             { text: "Home", link: "/" },
             // { text: "Projects", link: "/projects/" },
@@ -21,9 +22,6 @@ module.exports = {
             { text: "GitHub", link: "https://github.com/maozongmin/word" }
         ],
         sidebarDepth: 1,
-        // sidebar: {
-        //     "/word/": filehelper.genSidebar('word', filehelper.getFileName(docs+'/word/'), false),
-        // },
         sidebar: {
             "/word/": [
                 {
@@ -53,12 +51,23 @@ module.exports = {
     markdown: {
         // options for markdown-it-anchor
         lineNumbers: true,
-        anchor: { permalink: false },
+        anchor: { permalink: true },
         config: md => {
             md.use(require("markdown-it-katex"));
         }
     },
     plugins: [
-        "@vuepress-reco/vuepress-plugin-back-to-top"
+        "@vuepress/back-to-top",
+        [
+            'vuepress-plugin-comment',
+            {
+              choosen: 'valine', 
+              options: {
+                el: '#valine-vuepress-comment',
+                appId: 'H26iKkbCxGmDVflRNd8NFt1B-gzGzoHsz',
+                appKey: 'U4Arzom9kOqJRMNhhu12r49K',
+              }
+            }
+          ]
     ]
 };

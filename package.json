@@ -11,13 +11,15 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@vuepress-reco/vuepress-plugin-back-to-top": "^1.0.3",
-    "vuepress": "^0.14.5"
+    "@vuepress/plugin-back-to-top": "^1.2.0"
   },
   "dependencies": {
+    "leancloud-storage": "^4.0.0",
     "markdown-it": "^8.4.1",
     "markdown-it-emoji": "^1.4.0",
     "markdown-it-katex": "^2.0.3",
+    "valine": "^1.3.10",
+    "vuepress": "^1.2.0",
     "vuepress-plugin-comment": "^0.7.2"
   }
 }
