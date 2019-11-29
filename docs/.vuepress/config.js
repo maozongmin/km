@@ -10,14 +10,12 @@ module.exports = {
     head: [["link", { rel: "icon", href: `/logo.jpg` }]],
     base: "/",
     dest: "./dist",
-    extend: '@vuepress/theme-default',
+    extend: "@vuepress/theme-default",
     themeConfig: {
         displayAllHeaders: true,
         smoothScroll: true,
         nav: [
             { text: "Home", link: "/" },
-            // { text: "Projects", link: "/projects/" },
-            // { text: "Guide", link: "/guide/" },
             { text: "导航", link: "/word/" },
             { text: "GitHub", link: "https://github.com/maozongmin/word" }
         ],
@@ -59,15 +57,19 @@ module.exports = {
     plugins: [
         "@vuepress/back-to-top",
         [
-            'vuepress-plugin-comment',
+            "vuepress-plugin-comment",
             {
-              choosen: 'valine', 
-              options: {
-                el: '#valine-vuepress-comment',
-                appId: 'H26iKkbCxGmDVflRNd8NFt1B-gzGzoHsz',
-                appKey: 'U4Arzom9kOqJRMNhhu12r49K',
-              }
+                choosen: "valine",
+                options: {
+                    el: "#valine-vuepress-comment",
+                    appId: "H26iKkbCxGmDVflRNd8NFt1B-gzGzoHsz",
+                    appKey: "U4Arzom9kOqJRMNhhu12r49K",
+                    notify: false,
+                    verify: false,
+                    avatar: "mp",
+                    placeholder: "oh my god"
+                }
             }
-          ]
+        ]
     ]
 };
