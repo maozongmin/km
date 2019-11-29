@@ -7,7 +7,10 @@ module.exports = {
     description:
         "WEB前端开发,前端开发博客专注于前端开发,分享前端开发资源和前端开发技术资讯等,maozongmin",
     keywords: "前端开发,前端博客,前端技术,maozongmin",
-    head: [["link", { rel: "icon", href: `/logo.jpg` }]],
+    head: [
+        ["link", { rel: "icon", href: `/logo.jpg` }],
+        ['link', { rel: 'manifest', href: '/manifest.json' }],
+    ],
     base: "/",
     dest: "./dist",
     extend: "@vuepress/theme-default",
