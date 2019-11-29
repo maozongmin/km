@@ -70,6 +70,7 @@ module.exports = {
                     placeholder: "oh my god"
                 }
             }
-        ]
+        ],
+        '@vuepress/pwa'
     ]
 };
