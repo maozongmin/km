@@ -4,6 +4,7 @@
 // console.log(filehelper.genSidebar('word', filehelper.getFileName(docs+'/word/'), false))
 module.exports = {
     title: "maozongmin",
+    serviceWorker: true,
     description:
         "WEB前端开发,前端开发博客专注于前端开发,分享前端开发资源和前端开发技术资讯等,maozongmin",
     keywords: "前端开发,前端博客,前端技术,maozongmin",
