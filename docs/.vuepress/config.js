@@ -71,9 +71,16 @@ module.exports = {
                 }
             }
         ],
-        ['@vuepress/pwa', {
-            serviceWorker: true,
-            updatePopup: true
-        }]
+        [
+            "@vuepress/pwa",
+            {
+                serviceWorker: true,
+                updatePopup: true,
+                updatePopup: {
+                    message: "New content is available.",
+                    buttonText: "Refresh"
+                }
+            }
+        ]
     ]
 };
