@@ -56,6 +56,24 @@ module.exports = {
     },
     plugins: [
         "@vuepress/back-to-top",
-        '@vuepress/pwa'
+        [
+            "vuepress-plugin-comment",
+            {
+                choosen: "valine",
+                options: {
+                    el: "#valine-vuepress-comment",
+                    appId: "H26iKkbCxGmDVflRNd8NFt1B-gzGzoHsz",
+                    appKey: "U4Arzom9kOqJRMNhhu12r49K",
+                    notify: false,
+                    verify: false,
+                    avatar: "mp",
+                    placeholder: "oh my god"
+                }
+            }
+        ],
+        ['@vuepress/pwa', {
+            serviceWorker: true,
+            updatePopup: true
+        }]
     ]
 };
