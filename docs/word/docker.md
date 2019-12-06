@@ -1,6 +1,5 @@
 # docker
 ## boot2docker默认用户和密码
-<valine></valine>
 用户|密码|进入方式
 ---|:--:|---:
 docker|tcuser|ssh
@@ -59,6 +58,8 @@ docker exec [OPTIONS] CONTAINER COMMAND [ARG...]    // 进入容器执行bash do
 4. 本地文件复制到容器  
 `docker cp /宿主机目录/文件 容器名:/目录/文件`
 
+修改mysql密码  
+`ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'root'`
 
 ## 英文缩写
 ### 容器命令详解
