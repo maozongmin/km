@@ -219,7 +219,7 @@ input::-webkit-inner-spin-button {
 j- 专门用于js获取节点，勿占用
 :::
 ## css3 兼容文档
-“支持”代表不在需要前缀（以下资料来自https://caniuse.com和css3文档手册）
+“支持”代表不在需要前缀（以下资料来自<a href="https://caniuse.com/">https://caniuse.com</a>和css3文档手册）
 “主流浏览器”代表“QQ浏览器，搜狗浏览器，360，edge最新版”
 * ***line-clamp***  
 ie、edge、firefox不支持    其余的版本需要前缀

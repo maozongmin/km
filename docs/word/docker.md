@@ -58,6 +58,8 @@ docker exec [OPTIONS] CONTAINER COMMAND [ARG...]    // 进入容器执行bash do
 4. 本地文件复制到容器  
 `docker cp /宿主机目录/文件 容器名:/目录/文件`
 
+修改mysql  
+`docker run -itd --name=mysql -p 33066:3306 -v /course/mysql:/var/lib/mysql/ -e MYSQL_ROOT_PASSWORD=root mysql`
 修改mysql密码  
 `ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'root'`
 
