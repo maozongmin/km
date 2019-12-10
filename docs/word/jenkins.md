@@ -25,3 +25,6 @@ jenkins配置页面：http://localhost:8080/pluginManager/advanced
 
 如果用的github是私有库，那么配置Repository URL的时候需要加上名称：如下
 https://maozongmin@github.com/maozongmin/km.git
+
+## Jenkins SSH 远程执行 Shell 脚本
+<a href="https://fanlychie.github.io/post/jenkins-remote-ssh.html" target="_blank">https://fanlychie.github.io/post/jenkins-remote-ssh.html</a>
