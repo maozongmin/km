@@ -23,3 +23,6 @@ $(".test").on("touchmove",function(event){
 需滚动的元素取消冒泡
 
 ```
+
+## nuxt.js部署vue应用到服务端过程
+<a href="https://segmentfault.com/a/1190000011805986#item-4" target="_blank">参考地址</a>
