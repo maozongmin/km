@@ -81,3 +81,6 @@ ssl_certificate	        | 证书文件
 ssl_certificate_key	    | 私钥文件
 ssl_protocols	        | 使用的协议
 ssl_ciphers	            | 配置加密套件，写法遵循openssl标准
+
+## 二级目录反向代理
+<a href="https://zhang.ge/5054.html" target="_blank">Nginx通过二级目录（路径）映射不同的反向代理，规避IP+端口访问</a>

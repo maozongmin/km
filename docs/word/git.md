@@ -70,3 +70,10 @@ git remote add origin [url]
 ```
 
 3、直接修改config文件
+
+## 代码回滚到某commit
+```
+git log
+
+git reset –hard 8ff24a6803173208f3e606e32dfcf82db9ac84d8
+```
