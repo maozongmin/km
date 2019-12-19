@@ -60,8 +60,28 @@ docker exec [OPTIONS] CONTAINER COMMAND [ARG...]    // 进入容器执行bash do
 
 修改mysql  
 `docker run -itd --name=mysql -p 33066:3306 -v /course/mysql:/var/lib/mysql/ -e MYSQL_ROOT_PASSWORD=root mysql`
-修改mysql密码  
+修改mysql密码  为 root
 `ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'root'`
+
+## Dockerfile
+::: 介绍
+文件中包含Linux命令，`docker`通过读取文件中的命令来组件镜像  
+一般四部分： `基础镜像信息、维护者信息、镜像操作指令、容器启动时执行指令`
+    
+:::
+> `FROM`: 指定基础镜像，必须为第一个命令
+```
+格式： 
+    FROM <image>
+    FROM <image>:<tag>
+    FROM <image>@<digest>
+
+示例：
+    FROM centos:7.0
+```
+
+  
+
 
 ## 英文缩写
 ### 容器命令详解
