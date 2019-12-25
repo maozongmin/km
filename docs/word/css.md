@@ -200,7 +200,7 @@ input::-webkit-inner-spin-button {
 }
 ```
 
-## img和背景图一样自适应
+## img和background一样自适应
 * object-fit: contain  
 被替换的内容将被缩放，以在填充元素的内容框时保持其宽高比。 整个对象在填充盒子的同时保留其长宽比，因此如果宽高比与框的宽高比不匹配，该对象将被添加“黑边”。
 
