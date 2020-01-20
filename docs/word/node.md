@@ -41,3 +41,7 @@ console.log(world()) //Hello World
     process.cwd()            // 总是返回运行 node 命令时所在的文件夹的绝对路径
     ./                       // 跟 process.cwd() 一样，返回 node 命令时所在的文件夹的绝对路径
 ```
+
+## npm引用本地node包
+> package.json 中
+"test-jquery": "file:../../test-jquery"

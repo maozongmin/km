@@ -62,7 +62,11 @@ iphone手机端会出现占位空白
     overflow: hidden;
 }
 ```
-
+## 强制换行
+```
+word-break: break-all;
+white-space: pre-wrap;
+```
 ## 二维码无法识别
 手机端的二维码放background识别不了，需要使用img展示  
 2或2张以上二维码无法在同一视窗被识别，识别时隐藏掉干扰项

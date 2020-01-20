@@ -26,3 +26,6 @@ $(".test").on("touchmove",function(event){
 
 ## nuxt.js部署vue应用到服务端过程
 <a href="https://segmentfault.com/a/1190000011805986#item-4" target="_blank">参考地址</a>
+
+## 如何将U盘启动盘复原成普通U盘
+<a href="https://jingyan.baidu.com/article/2f9b480dedf94e41ca6cc272.html" target="_blank">如何将U盘启动盘复原成普通U盘</a>
