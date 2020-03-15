@@ -29,3 +29,6 @@ $(".test").on("touchmove",function(event){
 
 ## 如何将U盘启动盘复原成普通U盘
 <a href="https://jingyan.baidu.com/article/2f9b480dedf94e41ca6cc272.html" target="_blank">如何将U盘启动盘复原成普通U盘</a>
+
+## lnmp安装服务器
+<a href="https://lnmp.org/install.html" target="_blank">lnmp安装服务器</a>
