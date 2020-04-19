@@ -93,3 +93,7 @@ exec (execute)
 
 ## Docker 命令大全
 <a href="https://www.runoob.com/docker/docker-command-manual.html" target="_blank">Docker 命令大全</a>
+
+## docker 拉取镜像特别慢的解决办法
+<img src="https://img-blog.csdnimg.cn/20200130143259716.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zNjU2MjgwNA==,size_16,color_FFFFFF,t_70" />. 
+```"registry-mirrors":["https://f3lu6ju1.mirror.aliyuncs.com"]```
