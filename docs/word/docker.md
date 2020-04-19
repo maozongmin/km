@@ -31,7 +31,7 @@ docker exec [OPTIONS] CONTAINER COMMAND [ARG...]    // 进入容器执行bash do
 3. 查看容器（包括已停止的）： `docker ps -a`
 4. 停止容器：`docker stop container/container_id`
 5. 重启容器：`docker restart container/container_id`
-6. 重启容器：`docker rm container/container_id`
+6. 删除容器：`docker rm container/container_id`
 
 ### 容器的修改及保存
 1. 进入容器： `docker exec -it container_id/container_name /bin/bash`
