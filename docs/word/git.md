@@ -77,3 +77,8 @@ git log
 
 git reset –hard 8ff24a6803173208f3e606e32dfcf82db9ac84d8
 ```
+
+## pull拉取失败
+### git 出现 fatal: refusing to merge unrelated histories 错误
+使用：`git pull origin master --allow-unrelated-histories`  
+后面加上 --allow-unrelated-histories ， 把两段不相干的 分支进行强行合并,然后提交就可以了
