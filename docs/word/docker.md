@@ -99,3 +99,7 @@ exec (execute)
 
   添加
 ```"registry-mirrors":["https://f3lu6ju1.mirror.aliyuncs.com"]```
+
+## 本地连接docker虚拟机
+使用`ssh docker@<ip>`
+默认账号密码在顶部有写
