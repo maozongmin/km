@@ -45,3 +45,59 @@ console.log(world()) //Hello World
 ## npm引用本地node包
 > package.json 中
 "test-jquery": "file:../../test-jquery"
+
+## koa
+### 本地demo
+1. 将下列俩文件copy到本地
+2. 运行 `npm i`
+3. 运行 `npm start` 即可看到效果
+``` json
+// package.json
+{
+    "name": "demo",
+    "version": "1.0.0",
+    "description": "demo",
+    "main": "app.js",
+    "scripts": {
+        "start": "nodemon app.js"
+    },
+    "keywords": [
+        "koa",
+        "async"
+    ],
+    "author": "maozongmin",
+    "dependencies": {
+        "koa": "2.0.0",
+        "nodemon": "^2.0.3"
+    }
+}
+```
+``` js
+// app.js
+const Koa = require('koa')
+
+const app = new Koa()
+
+app.use(async (ctx, next) => {
+    await next();
+    ctx.response.status = 200;
+    ctx.response.type = 'text/html';
+    ctx.response.body = '<h1>Hello, ko333a2!</h1>';
+});
+
+app.use(async (ctx, next) => {
+    console.log(`${ctx.request.method} ${ctx.request.url}`); // 打印URL
+    await next(); // 调用下一个middleware
+    console.log(`${ctx.request.method} ${ctx.request.url}2`); // 打印URL
+});
+
+app.use(async (ctx, next) => {
+    const start = new Date().getTime(); // 当前时间
+    await next(); // 调用下一个middleware
+    const ms = new Date().getTime() - start; // 耗费时间
+    console.log(`Time: ${ms}ms`); // 打印耗费时间
+});
+
+app.listen(3000);
+console.log('app started at port 3000...');
+```

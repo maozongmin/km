@@ -23,3 +23,49 @@ ES6中的Set构造函数，set类似数组，但是值是唯一的。可以用�
 var a = new Set([1,2,3,6,6,6,1])  
 // 输出：[1,2,3,6]
 :::
+
+## 高清晰度canvas
+``` js
+/**
+    * 创建高分辨率画布
+    * @param w     画布宽
+    * @param h     画布高
+    * @param ratio 屏幕分辨率
+    */
+function createHiDPICanvas(w, h, ratio) {
+    const PIXEL_RATIO = (function() {
+        const c = document.createElement("canvas"),
+            ctx = c.getContext("2d"),
+            dpr = window.devicePixelRatio || 1,
+            bsr =
+                ctx["webkitBackingStorePixelRatio"] ||
+                ctx["mozBackingStorePixelRatio"] ||
+                ctx["msBackingStorePixelRatio"] ||
+                ctx["oBackingStorePixelRatio"] ||
+                ctx["backingStorePixelRatio"] ||
+                1;
+
+        return dpr / bsr;
+    })();
+
+    if (!ratio) {
+        ratio = PIXEL_RATIO;
+    }
+    const can = document.createElement("canvas");
+    can.width = w * ratio;
+    can.height = h * ratio;
+    can.style.width = w + "px";
+    can.style.height = h + "px";
+    can.getContext("2d").setTransform(ratio, 0, 0, ratio, 0, 0);
+    return can;
+}
+
+// 创建分辨率为 3 的画布
+var img = document.getElementById("pic");
+const canvas = createHiDPICanvas(230, 140, 2);
+var ctx3 = canvas.getContext('2d')
+img.onload = function(){
+    ctx3.drawImage(img, 0, 0, 230, 140);
+}
+document.body.appendChild(canvas);
+```

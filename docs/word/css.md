@@ -224,6 +224,48 @@ input::-webkit-inner-spin-button {
 * background-clip  设置元素的背景（背景图片或颜色）是否延伸到边框下面。  
 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-clip">background-clip示例详解</a>
 
+## 取消a标签在移动端点击时的背景颜色
+### 一、取消a标签在移动端点击时的蓝色
+
+``` css
+a{
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-user-select: none;
+    -moz-user-focus: none;
+    -moz-user-select: none;
+}
+```
+
+### 二、使用图片作为a标签的点击按钮时，当触发touchstart的时候，往往会有一个灰色的背景
+``` css
+a,a:hover,a:active,a:visited,a:link,a:focus{
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+    outline:none;
+    background: none;
+    text-decoration: none;
+}
+```
+
+### 三、改变选中内容的背景颜色
+``` css
+::selection { 
+    background: #FFF; 
+    color: #333; 
+} 
+::-moz-selection { 
+    background: #FFF; 
+    color: #333; 
+} 
+::-webkit-selection { 
+    background: #FFF; 
+    color: #333; 
+} 
+```
+### 四、去除ios input框点击时的灰色背景
+
+`-webkit-tap-highlight-color:rgba(0,0,0,0);`
+
 ## 命名规范
 :::tip 规范
 重置和默认：reset + base
