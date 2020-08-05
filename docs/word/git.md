@@ -82,3 +82,15 @@ git reset –hard 8ff24a6803173208f3e606e32dfcf82db9ac84d8
 ### git 出现 fatal: refusing to merge unrelated histories 错误
 使用：`git pull origin master --allow-unrelated-histories`  
 后面加上 --allow-unrelated-histories ， 把两段不相干的 分支进行强行合并,然后提交就可以了
+
+## git保存账号密码
+### 为了不用每次都输入账号密码
+```
+在git bash交互环境输入命令
+
+git config  credential.helper store                                             
+
+这里没有--global意思是指只对这个仓库生效，建议以后都不要加--global
+
+让代码配置以仓库为单位存储就好，设置成全局不灵活
+```
