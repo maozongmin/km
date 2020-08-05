@@ -103,3 +103,6 @@ exec (execute)
 ## 本地连接docker虚拟机
 使用`ssh docker@<ip>`
 默认账号密码在顶部有写
+
+## Window中的Docker 拉取Mysql镜像 并在本地Navicate链接
+<a href="https://www.cnblogs.com/afeige/p/10698155.html">Window中的Docker 拉取Mysql镜像 并在本地Navicate链接</a>
