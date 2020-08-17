@@ -35,3 +35,5 @@ $(".test").on("touchmove",function(event){
 <a href="https://lnmp.org/faq/ftpserver.html" target="_blank">lnmp安装ftp</a>  
 `lnmp ftp add|del|edit|show|list`
 
+## Mac下终端工具iTerm2安装
+<a target="_blank" href="https://www.jianshu.com/p/ba08713c2b19">Mac下终端工具iTerm2安装</a>
