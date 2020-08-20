@@ -101,3 +101,12 @@ app.use(async (ctx, next) => {
 app.listen(3000);
 console.log('app started at port 3000...');
 ```
+
+## 设置npm install的源
+
+```
+设置成淘宝源
+npm config set registry https://registry.npm.taobao.org
+查看结果
+npm config get registry
+```
