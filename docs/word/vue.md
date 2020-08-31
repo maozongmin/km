@@ -71,3 +71,20 @@ npm rebuild node-sass
     <p style="color:#ccc;">{{this.dropData}}</p>
 </div>
 ```
+
+## 路由跳转一直带上参数
+```
+router.beforeEach((to, from, next) => {
+    if (Object.keys(to.query).length) {
+        next();
+        return;
+    }
+    // 对URL路径参数进行处理
+    if (Object.keys(from.query).length) {
+        let toQuery = JSON.parse(JSON.stringify(from.query));
+        next({ path: to.path, query: toQuery });
+    } else {
+        next();
+    }
+});
+```
