@@ -331,3 +331,10 @@ ie6-8，firefox2-3.5不支持  ie9+、chrome、firefox4+、主流浏览器支持
 ie6-8，firefox2.0-12，chrome4.0-24不支持  其余版本都支持
 * ***background-repeat 中的round和space***  
  ie6-8、firefox2-48、chrome4-31不支持 ie9+、chrome32、firefox49+、主流浏览器支持 
+ 
+ ## 文字一行平均分布
+ ```
+ 	div{
+		text-align-last: justify;
+	}
+ ```
