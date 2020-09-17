@@ -110,3 +110,10 @@ npm config set registry https://registry.npm.taobao.org
 查看结果
 npm config get registry
 ```
+
+## 升级package.json的包
+<a href="https://github.com/raineorshine/npm-check-updates" target="_blank">npm-check-updates</a> 工具
+```
+npm install -g npm-check-updates
+ncu -u
+```
