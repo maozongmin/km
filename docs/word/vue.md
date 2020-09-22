@@ -73,7 +73,7 @@ npm rebuild node-sass
 ```
 
 ## 路由跳转一直带上参数
-```
+``` js
 router.beforeEach((to, from, next) => {
     if (Object.keys(to.query).length) {
         next();
@@ -87,4 +87,48 @@ router.beforeEach((to, from, next) => {
         next();
     }
 });
+```
+## 优化点细节
+```
+1. vFor和vIf不要一起使用
+2. vFor 是不推荐使用 index 下标来作为 key 的值
+3. 长列表 推荐使用 vue-virtual-scroller
+4. 图片懒加载
+5. 路由按需加载
+   // require法
+    component: resolve=>(require(['@/components/HelloWorld'],resolve))
+
+    // import
+    component: () => import('@/components/HelloWorld')
+6. 最小化JS文件
+    config.optimization.minimize(true);
+7. 图片资源压缩（可以通过 image-webpack-loader 插件对打包的图片进行压缩）
+    config.module
+      .rule('images')
+      .use('image-webpack-loader')
+      .loader('image-webpack-loader')
+      .options({
+        bypassOnDebug: true
+      })
+      .end()
+8. 打包公共代码
+    在 webpack4 中，可以通过 optimization.minimize 将公共代码进行打包
+    new webpack.optimize.CommonsChunkPlugin({
+      name: ['vendor','runtime'],
+      filename: '[xxxxx].js'
+    })
+9. 删除沉淀代码
+    使用 Tree-Shaking 插件可以将一些无用的沉淀泥沙代码给清理掉。
+10. 依赖库CDN加速
+    // 在html引入script标签后。在vue的配置中，进行声明
+    configureWebpack: {
+      externals: {
+        'echarts': 'echarts' // 配置使用CDN
+      }
+    }
+11. GZIP
+    这个东西需要后端进行配置，当然，如果你有操作 Nginx 的权限的话，那么可以自己开启
+    
+12. CDN + Gzip + Prerender
+    https://blog.csdn.net/haochuan9421/article/details/82962835
 ```
