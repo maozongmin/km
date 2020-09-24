@@ -47,6 +47,9 @@
 
 ## 文件操作
 
+### Linux 如何使用echo指令向文件写入内容
+<a href="https://www.cnblogs.com/liuchuanfeng/p/6893680.html">Linux 如何使用echo指令向文件写入内容</a>
+
 ### 文件创建
     mkdir test // 创建文件夹
     vi test.txt // 创建文件
@@ -152,3 +155,4 @@ npm config set cache "node_cache"
 npm install grunt # 本地安装
 npm1 install -g grunt-cli # 全局安装
 ```
+
