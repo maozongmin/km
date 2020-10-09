@@ -94,3 +94,21 @@ git config  credential.helper store
 
 让代码配置以仓库为单位存储就好，设置成全局不灵活
 ```
+
+## 解决冲突
+### 检出，检查（评审）和本地合并
+```
+步骤 1. 获取并检出此合并请求的分支
+
+git fetch origin
+git checkout -b package_update origin/package_update
+步骤 2. 在本地查看更改
+
+步骤 3. 合并分支并修复冲突
+
+git checkout master_test
+git merge --no-ff package_update
+步骤 4. 将合并结果推送到Git服务器
+
+git push origin master_test
+```
