@@ -37,3 +37,6 @@ $(".test").on("touchmove",function(event){
 
 ## Mac下终端工具iTerm2安装
 <a target="_blank" href="https://www.jianshu.com/p/ba08713c2b19">Mac下终端工具iTerm2安装</a>
+
+## 1分钟将vscode撸成小霸王  
+https://juejin.im/post/6882576431503638536
