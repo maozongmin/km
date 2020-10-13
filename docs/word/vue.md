@@ -132,3 +132,6 @@ router.beforeEach((to, from, next) => {
 12. CDN + Gzip + Prerender
     https://blog.csdn.net/haochuan9421/article/details/82962835
 ```
+
+13. vue2 eslint 如何自动修正
+https://www.jianshu.com/p/bfc13fb6c6ed
