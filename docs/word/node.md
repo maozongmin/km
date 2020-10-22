@@ -1,4 +1,22 @@
 # node
+## node和浏览器的export
+Node和浏览器端所支持的模块规范不同。
+
+条目	Node	浏览器
+模块规范	CommonJS	ES6
+导出	* modules.exports; exports	export; export default
+引入	require	import；require
+1. 关于exports和module.exports
+在一个node执行一个文件时，会给这个文件内生成一个 exports和module对象，
+而module有一个exports属性。
+exports = module.exports = {};
+2. 关于 export 和export default
+export与export default均可用于导出常量、函数、文件、模块等
+在一个文件或模块中，export、import可以有多个，export default仅有一个
+通过export方式导出，在导入时要加{ }，export default则不需要
+export能直接导出变量表达式，export default不行。
+
+
 ## exports 和 module.exports
 模块：
 模块接口的唯一变化是使用 module.exports = Hello 代替了exports.world = function(){}。 在外部引用该模块时，其接口对象就是要输出的 Hello 对象本身，而不是原先的 exports。
