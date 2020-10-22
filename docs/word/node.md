@@ -1,28 +1,37 @@
 # node
-## node和浏览器的export
-Node和浏览器端所支持的模块规范不同。
 
-条目	Node	浏览器
-模块规范	CommonJS	ES6
-导出	* modules.exports; exports	export; export default
-引入	require	import；require
-1. 关于exports和module.exports
-在一个node执行一个文件时，会给这个文件内生成一个 exports和module对象，
-而module有一个exports属性。
-exports = module.exports = {};
-2. 关于 export 和export default
-export与export default均可用于导出常量、函数、文件、模块等
-在一个文件或模块中，export、import可以有多个，export default仅有一个
-通过export方式导出，在导入时要加{ }，export default则不需要
-export能直接导出变量表达式，export default不行。
+## node 和浏览器的 export
 
+Node 和浏览器端所支持的模块规范不同。
+
+| 条目     |            Node             |                 浏览器 |
+| -------- | :-------------------------: | ---------------------: |
+| 模块规范 |          CommonJS           |                    ES6 |
+| 导出     | \* modules.exports; exports | export; export default |
+| 引入     |      require import；       |                require |
+
+```
+1. 关于 exports 和 module.exports
+ 在一个 node 执行一个文件时，会给这个文件内生成一个 exports 和 module 对象，
+ 而 module 有一个 exports 属性。
+ exports = module.exports = {};
+
+2. 关于 export 和 export default
+ export 与 export default 均可用于导出常量、函数、文件、模块等
+ 在一个文件或模块中，export、import 可以有多个，export default 仅有一个
+ 通过 export 方式导出，在导入时要加{ }，export default 则不需要
+ export 能直接导出变量表达式，export default 不行。
+```
 
 ## exports 和 module.exports
-模块：
-模块接口的唯一变化是使用 module.exports = Hello 代替了exports.world = function(){}。 在外部引用该模块时，其接口对象就是要输出的 Hello 对象本身，而不是原先的 exports。
 
-exports（间隔了一层，再访问属性）和module.exports(可以直接访问属性)的区别:
+模块：
+模块接口的唯一变化是使用 module.exports = Hello 代替了 exports.world = function(){}。 在外部引用该模块时，其接口对象就是要输出的 Hello 对象本身，而不是原先的 exports。
+
+exports（间隔了一层，再访问属性）和 module.exports(可以直接访问属性)的区别:
+
 ### exports:
+
 ```
 // world.js
 function world() {
@@ -30,13 +39,17 @@ function world() {
 }
 exports.world = world;
 ```
+
 另一个文件中：
+
 ```
 // main.js
 var world = require('./world.js');
 console.log(world.world()) //Hello World
 ```
+
 ### module.exports:
+
 ```
 // world.js
 function world() {
@@ -46,6 +59,7 @@ module.exports = world;
 ```
 
 另外一个文件中
+
 ```
 // main.js
 var world = require('./world.js');
@@ -53,6 +67,7 @@ console.log(world()) //Hello World
 ```
 
 ## 获取路径
+
 ```
     __dirname                // 总是返回被执行的 js 所在文件夹的绝对路径
     __filename               // 总是返回被执行的 js 的绝对路径
@@ -60,16 +75,20 @@ console.log(world()) //Hello World
     ./                       // 跟 process.cwd() 一样，返回 node 命令时所在的文件夹的绝对路径
 ```
 
-## npm引用本地node包
+## npm 引用本地 node 包
+
 > package.json 中
-"test-jquery": "file:../../test-jquery"
+> "test-jquery": "file:../../test-jquery"
 
 ## koa
-### 本地demo
-1. 将下列俩文件copy到本地
+
+### 本地 demo
+
+1. 将下列俩文件 copy 到本地
 2. 运行 `npm i`
 3. 运行 `npm start` 即可看到效果
-``` json
+
+```json
 // package.json
 {
     "name": "demo",
@@ -79,10 +98,7 @@ console.log(world()) //Hello World
     "scripts": {
         "start": "nodemon app.js"
     },
-    "keywords": [
-        "koa",
-        "async"
-    ],
+    "keywords": ["koa", "async"],
     "author": "maozongmin",
     "dependencies": {
         "koa": "2.0.0",
@@ -90,11 +106,12 @@ console.log(world()) //Hello World
     }
 }
 ```
-``` js
-// app.js
-const Koa = require('koa')
 
-const app = new Koa()
+```js
+// app.js
+const Koa = require('koa');
+
+const app = new Koa();
 
 app.use(async (ctx, next) => {
     await next();
@@ -120,7 +137,7 @@ app.listen(3000);
 console.log('app started at port 3000...');
 ```
 
-## 设置npm install的源
+## 设置 npm install 的源
 
 ```
 设置成淘宝源
@@ -129,8 +146,10 @@ npm config set registry https://registry.npm.taobao.org
 npm config get registry
 ```
 
-## 升级package.json的包
+## 升级 package.json 的包
+
 <a href="https://github.com/raineorshine/npm-check-updates" target="_blank">npm-check-updates</a> 工具
+
 ```
 npm install -g npm-check-updates
 ncu -u
