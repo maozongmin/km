@@ -1,7 +1,7 @@
-
-# git 
+# git
 
 ## 常用命令
+
 ```
     env                                                     // 查看环境变量
     env |grep proxy                                         // 查看代理
@@ -18,12 +18,14 @@
 ```
 
 ## Git 全局设置
+
 ```
     git config --global user.name  "maozongmin"
     git config --global user.email "861463757@qq.com"
 ```
 
 ## 创建一个新仓库
+
 ```
     git clone https://github.com/maozongmin/km.git
     cd km
@@ -33,11 +35,12 @@
     git push -u origin master
 ```
 
-
 ## 已存在文件夹或仓库
-::: tip 将本地仓库和github仓库关联起来
+
+::: tip 将本地仓库和 github 仓库关联起来
 git remote add origin https://github.com/maozongmin/km 这里的网址就是仓库的网址
 :::
+
 ```
     cd existing_folder
     git init
@@ -48,47 +51,53 @@ git remote add origin https://github.com/maozongmin/km 这里的网址就是仓�
 ```
 
 ## 修改上传限制
- ```
+
+```
 git config --global http.postBuffer 157286400（代表设置上传上限大小为150M）
- ```
-
-
-
+```
 
 ## 修改远程仓库地址
+
 方法有三种：
 
 1、修改命令
+
 ```
 git remote set-url origin [url]
 ```
 
 2、先删后加
+
 ```
 git remote rm origin
 git remote add origin [url]
 ```
 
-3、直接修改config文件
+3、直接修改 config 文件
 
-## 代码回滚到某commit
+## 代码回滚到某 commit
+
 ```
 git log
 
 git reset –hard 8ff24a6803173208f3e606e32dfcf82db9ac84d8
 ```
 
-## pull拉取失败
+## pull 拉取失败
+
 ### git 出现 fatal: refusing to merge unrelated histories 错误
+
 使用：`git pull origin master --allow-unrelated-histories`  
 后面加上 --allow-unrelated-histories ， 把两段不相干的 分支进行强行合并,然后提交就可以了
 
-## git保存账号密码
+## git 保存账号密码
+
 ### 为了不用每次都输入账号密码
+
 ```
 在git bash交互环境输入命令
 
-git config  credential.helper store                                             
+git config  credential.helper store
 
 这里没有--global意思是指只对这个仓库生效，建议以后都不要加--global
 
@@ -96,7 +105,9 @@ git config  credential.helper store
 ```
 
 ## 解决冲突
+
 ### 检出，检查（评审）和本地合并
+
 ```
 步骤 1. 获取并检出此合并请求的分支
 
