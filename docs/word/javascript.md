@@ -69,3 +69,6 @@ img.onload = function(){
 }
 document.body.appendChild(canvas);
 ```
+
+## js获取本地图片并转换成base64格式
+<a href="https://blog.csdn.net/weixin_40431771/article/details/89380316">js获取本地图片并转换成base64格式</a>
