@@ -146,6 +146,18 @@ npm config set registry https://registry.npm.taobao.org
 npm config get registry
 ```
 
+## 设置npm的proxy代理
+```
+npm config set proxy http://generalichina\qtmp003:Aa123456
+npm confit set https-proxy http://username:password@server:port
+```
+
+## 取消npm的proxy代理
+```
+npm config delete http-proxy
+npm config delete https-proxy
+```
+
 ## 升级 package.json 的包
 
 <a href="https://github.com/raineorshine/npm-check-updates" target="_blank">npm-check-updates</a> 工具
