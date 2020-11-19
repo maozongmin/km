@@ -55,3 +55,6 @@ https://juejin.im/post/6882576431503638536
 # 预览md文件
 Ctrl + Shift + V快捷键
 ```
+
+## VuePress window document is not defined
+<a target="_blank" href="https://segmentfault.com/a/1190000022727986">全局安装第三方插件，打包报错VuePress window document is not defined</a>
