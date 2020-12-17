@@ -76,8 +76,8 @@ console.log(world()) //Hello World
 ```
 
 ## npm 引用本地 node 包
-
-> package.json 中
+使用`npm install ../test-jquery`安装本地包
+> 然后在package.json 中可以看到
 > "test-jquery": "file:../../test-jquery"
 
 ## koa
