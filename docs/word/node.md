@@ -76,7 +76,7 @@ console.log(world()) //Hello World
 ```
 
 ## npm 引用本地 node 包
-使用`npm install ../test-jquery`安装本地包
+使用`npm install ../test-jquery`安装本地包，安装前确认项目中node_modules没有同名的包,如果有，请删除。
 > 然后在package.json 中可以看到
 > "test-jquery": "file:../../test-jquery"
 
