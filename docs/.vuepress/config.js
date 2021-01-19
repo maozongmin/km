@@ -3,50 +3,48 @@
 // const filehelper = require('./getFilenames.js');
 // console.log(filehelper.genSidebar('word', filehelper.getFileName(docs+'/word/'), false))
 module.exports = {
-    title: "maozongmin",
+    title: 'maozongmin',
     serviceWorker: true,
     description:
-        "WEB前端开发,前端开发博客专注于前端开发,分享前端开发资源和前端开发技术资讯等,maozongmin",
-    keywords: "前端开发,前端博客,前端技术,maozongmin",
+        'WEB前端开发,前端开发博客专注于前端开发,分享前端开发资源和前端开发技术资讯等,maozongmin',
+    keywords: '前端开发,前端博客,前端技术,maozongmin',
     head: [
         ['link', { rel: 'icon', href: `/logo.png` }],
         ['link', { rel: 'manifest', href: '/manifest.json' }]
     ],
-    base: "/",
-    dest: "./dist",
-    extend: "@vuepress/theme-default",
+    base: '/',
+    dest: './dist',
+    extend: '@vuepress/theme-default',
     themeConfig: {
         displayAllHeaders: true,
         smoothScroll: true,
-        nav: [
-            { text: "Home", link: "/" },
-            { text: "导航", link: "/word/" },
-        ],
+        nav: [{ text: 'Home', link: '/' }, { text: '导航', link: '/word/' }],
         sidebarDepth: 1,
         sidebar: {
-            "/word/": [
+            '/word/': [
                 {
-                    title: "导航",
+                    title: '导航',
                     collapsable: false,
                     children: [
-                        "",
-                        "html",
-                        "css",
-                        "javascript",
-                        "node",
-                        "vue",
-                        "git",
-                        "jenkins",
-                        "linux",
-                        "markdown",
-                        "nginx",
-                        "docker",
-                        "other"
+                        '',
+                        'html',
+                        'css',
+                        'javascript',
+                        'node',
+                        'vue',
+                        'git',
+                        'jenkins',
+                        'linux',
+                        'markdown',
+                        'nginx',
+                        'docker',
+                        'other',
+                        'question'
                     ]
                 }
             ]
         },
-        lastUpdated: "上次更新",
+        lastUpdated: '上次更新',
         // 假定是 GitHub. 同时也可以是一个完整的 GitLab URL
         repo: 'maozongmin/km',
         // 自定义仓库链接文字。默认从 `themeConfig.repo` 中自动推断为
@@ -72,34 +70,34 @@ module.exports = {
         lineNumbers: true,
         anchor: { permalink: true },
         config: md => {
-            md.use(require("markdown-it-katex"));
+            md.use(require('markdown-it-katex'));
         }
     },
     plugins: [
-    ["@vuepress/back-to-top"],
+        ['@vuepress/back-to-top'],
         [
-            "vuepress-plugin-comment",
+            'vuepress-plugin-comment',
             {
-                choosen: "valine",
+                choosen: 'valine',
                 options: {
-                    el: "#valine-vuepress-comment",
-                    appId: "H26iKkbCxGmDVflRNd8NFt1B-gzGzoHsz",
-                    appKey: "U4Arzom9kOqJRMNhhu12r49K",
+                    el: '#valine-vuepress-comment',
+                    appId: 'H26iKkbCxGmDVflRNd8NFt1B-gzGzoHsz',
+                    appKey: 'U4Arzom9kOqJRMNhhu12r49K',
                     notify: false,
                     verify: false,
-                    avatar: "mp",
-                    placeholder: "oh my god"
+                    avatar: 'mp',
+                    placeholder: 'oh my god'
                 }
             }
         ],
         [
-            "@vuepress/pwa",
+            '@vuepress/pwa',
             {
                 serviceWorker: true,
                 updatePopup: true,
                 updatePopup: {
-                    message: "New content is available.",
-                    buttonText: "Refresh"
+                    message: 'New content is available.',
+                    buttonText: 'Refresh'
                 }
             }
         ]
