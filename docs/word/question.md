@@ -1,86 +1,96 @@
 # 常见问题
 
-## 技术面 - 前端知识
+## 技术 - 前端知识
 
-<style>
-    .answer{
-        /* background: #ccc; */
-    }
-</style>
+-   <b>dom 树节点和渲染树节点一一对应吗，有什么是 dom 树会有，渲染树不会有的节点?</b>
 
--   dom 树节点和渲染树节点一一对应吗，有什么是 dom 树会有，渲染树不会有的节点?
+    在 DOM 树构建的同时，浏览器会构建渲染树（render tree）。渲染树的节点（渲染器），在 Gecko 中称为 frame，而在 webkit 中称为 renderer。渲染器是在文档解析和创建 DOM 节点后创建的，会计算 DOM 节点的样式信息。
 
-    <div class="answer">
-        在 DOM 树构建的同时，浏览器会构建渲染树（render tree）。渲染树的节点（渲染器），在 Gecko 中称为 frame，而在 webkit 中称为 renderer。渲染器是在文档解析和创建 DOM 节点后创建的，会计算 DOM 节点的样式信息。  
-        在 webkit 中，renderer 是由 DOM 节点调用 attach()方法创建的。attach()方法计算了 DOM 节点的样式信息。attach()是自上而下的递归操作。也就是说，父节点总是比子节点先创建自己的 renderer。销毁的时候，则是自下而上的递归操作，也就是说，子节点总是比父节点先销毁。
+    在 webkit 中，renderer 是由 DOM 节点调用 attach()方法创建的。attach()方法计算了 DOM 节点的样式信息。attach()是自上而下的递归操作。也就是说，父节点总是比子节点先创建自己的 renderer。销毁的时候，则是自下而上的递归操作，也就是说，子节点总是比父节点先销毁。
 
-        如果元素的 display 属性被设置成了 none，或者如果元素的子孙继承了 display:none，renderer 不会被创建。节点的子类和 display 属性一起决定为该节点创建什么样的渲染器。但是 visibility：hidden 的元素会被创建。
+    如果元素的 display 属性被设置成了 none，或者如果元素的子孙继承了 display:none，renderer 不会被创建。节点的子类和 display 属性一起决定为该节点创建什么样的渲染器。但是 visibility：hidden 的元素会被创建。
 
-        在 webkit 中，根据 display 属性的不同，创建不同的 renderer，比如：
+    在 webkit 中，根据 display 属性的不同，创建不同的 renderer，比如：
 
-        (1) display:inline，创建的是 RenderInline 类型。
+    (1) display:inline，创建的是 RenderInline 类型。
 
-        (2) display:block，创建的是 RenderBlock 类型。
+    (2) display:block，创建的是 RenderBlock 类型。
 
-        (3) display:inline-block，创建的是 RenderBlock 类型。
+    (3) display:inline-block，创建的是 RenderBlock 类型。
 
-        (4) display:list-item，创建的是 RenderListItem 类型。
+    (4) display:list-item，创建的是 RenderListItem 类型。
 
-        position:relative 和 position:absolute 的元素在渲染树中的位置与 DOM 节点在 DOM 树中的位置是不一样的。
+    position:relative 和 position:absolute 的元素在渲染树中的位置与 DOM 节点在 DOM 树中的位置是不一样的。
 
     DOM 树和渲染树的对应关系如下图：
 
-        <img src="https://mp.weixin.qq.com/mp/qrcode?scene=10000004&size=102&__biz=MzIzNDYzNzkzOA==&mid=2247483976&idx=1&sn=8d2e72bb7f816b8c58d2fcef02219f02&send_time="/>
+    <img src="../.vuepress/public/img/20140224185057296.jpg"/>
 
-    </div>
+-   <b>CSS 会阻塞 dom 解析吗？</b>
 
--   CSS 会阻塞 dom 解析吗？
+    ```
+    浏览器是解析DOM生成DOM Tree，结合CSS生成的CSS Tree，最终组成render tree，再渲染页面。在此过程中CSS完全无法影响DOM Tree，因而无需阻塞DOM解析。
 
-requestIdleCallback 是干什么用的
+    CSS 不会阻塞 DOM 的解析，但会阻塞 DOM 渲染。
 
-浏览器的渲染原理
+    css加载会阻塞后面js语句的执行
 
-浏览器的渲染过程
+    js会阻塞DOM树的解析，也会阻塞DOM树的渲染，但浏览器会"偷看"DOM，预先下载相关资源。
 
-关键渲染路径详述
+    浏览器遇到 <script>且没有 defer 或 async 属性的 标签时，会触发页面渲染，因而如果前面 CSS 资源尚未加载完毕时，浏览器会等待它加载完毕在执行脚本。
 
-避免回流的方式
+    所以，你现在明白为何<script>最好放底部，<link>最好放头部，如果头部同时有<script>与<link>的情况下，最好将<script>放在<link>上面
+    ```
 
-跨域的方式
+-   requestIdleCallback 是干什么用的
 
-前端的网络安全如何防御（xss，csrf）
+    当关注用户体验，不希望因为一些不重要的任务（如统计上报）导致用户感觉到卡顿的话，就应该考虑使用 requestIdleCallback。因为 requestIdleCallback 回调的执行的前提条件是当前浏览器处于空闲状态。
 
-cookies 的保护方式
+    requestAnimationFrame 的回调会在每一帧确定执行，属于高优先级任务，而 requestIdleCallback 的回调则不一定，属于低优先级任务。
 
-浏览器的缓存机制
+-   浏览器的渲染原理
 
-什么文件用强缓存，什么文件用协商缓存
+*   浏览器的渲染过程
 
-React-Native 的原理，优缺点
+*   关键渲染路径详述
 
-react 的虚拟 dom 和 diff 描述
+*   避免回流的方式
 
-react 渲染优化（class，hook）
+*   跨域的方式
 
-react 的 context 的使用场景
+*   前端的网络安全如何防御（xss，csrf）
 
-node 和后端知识
+*   cookies 的保护方式
 
-mysql 和 mongo 的区别，使用情景
+*   浏览器的缓存机制
 
-node 有什么情况会导致内存溢出
+*   什么文件用强缓存，什么文件用协商缓存
 
-node 的内存分配
+*   React-Native 的原理，优缺点
 
-event loop（浏览器和 node）
+*   react 的虚拟 dom 和 diff 描述
 
-开放性题目
+*   react 渲染优化（class，hook）
 
-首屏优化方案
+*   react 的 context 的使用场景
 
-在 App 中如何实现前端资源离线缓存（方案）
+*   node 和后端知识
 
-算法
+*   mysql 和 mongo 的区别，使用情景
+
+*   node 有什么情况会导致内存溢出
+
+*   node 的内存分配
+
+*   event loop（浏览器和 node）
+
+*   开放性题目
+
+*   首屏优化方案
+
+*   在 App 中如何实现前端资源离线缓存（方案）
+
+*   算法
 
 const arr = [101,19,12,51,32,7,103,8];
 
@@ -369,3 +379,7 @@ udp
 哈希表
 
 动态规划（一般为加分题）
+
+```
+
+```
