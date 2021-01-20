@@ -143,3 +143,7 @@ taskkill /t /pid 2152
 taskkill /f /im notepad.exe
 taskkill /f /pid 2152
 ```
+
+### nginx 那些事
+
+<img src="../.vuepress/public/img/nginx.png" />

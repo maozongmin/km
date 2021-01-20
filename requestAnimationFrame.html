@@ -1,0 +1,32 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script>
+            let index = 0;
+            let id = 0;
+            let total = 500;
+            let container = document.getElementById('container');
+            function load() {
+                index += 20;
+                if (index < total) {
+                    requestAnimationFrame(() => {
+                        for (let i = 0; i < 20; i++) {
+                            let fragment = document.createDocumentFragment();
+                            let li = document.createElement('li');
+                            li.innerHTML = id++;
+                            fragment.appendChild(li);
+                            container.appendChild(fragment);
+                        }
+                        load();
+                    });
+                }
+            }
+            load();
+        </script>
+    </body>
+</html>
