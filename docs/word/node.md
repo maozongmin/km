@@ -166,3 +166,24 @@ npm config delete https-proxy
 npm install -g npm-check-updates
 ncu -u
 ```
+
+## 本地设置全局npm命令
+在需要链接到全局的文件夹下使用 `npm link`  
+执行命令默认为name，也就是下面的vite，执行入口为bin，如果bin为对象，那么执行命令为bin的对象名，也就是bin下的vite
+``` json
+{
+  "name": "vite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "vite": "./bin/www.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+```
