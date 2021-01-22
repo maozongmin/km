@@ -38,8 +38,7 @@ module.exports = {
                         'markdown',
                         'nginx',
                         'docker',
-                        'other',
-                        'question'
+                        'other'
                     ]
                 }
             ]

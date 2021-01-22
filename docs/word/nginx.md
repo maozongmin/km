@@ -268,8 +268,9 @@ server  {
 
 > 可以配置 nginx 的白名单，规定有哪些 ip 可以访问你的服务器，防爬虫必备
 
+-   简单配置
+
 ```nginx
-# 简单配置
 server {
   location / {
     deny  192.168.0.1; # 禁止该ip访问
@@ -278,22 +279,29 @@ server {
 }
 ```
 
-白名单配置
-建立白名单
+-   白名单配置
+
+```
+# 建立白名单
 
 vim /etc/nginx/white_ip.conf
 ...
 192.168.0.1 1;
 ...
-修改 nginx 配置(nginx.conf)
+```
 
+```nginx
+# 修改 nginx 配置(nginx.conf)
 geo $remote_addr $ip_whitelist{
-default 0;
-include ip.conf;
+    default 0;
+    include ip.conf;
 }
-// geo 指令主要是可以根据指定变量的值映射出一个新变量。如果不指定变量，默认为`$remote_addr`
-为匹配项做白名单设置
+# geo 指令主要是可以根据指定变量的值映射出一个新变量。如果不指定变量，默认为`$remote_addr`
+```
 
+-   为匹配项做白名单设置
+
+```
 server {
 location / {
 if ( $ip_whitelist = 0 ){
@@ -303,54 +311,68 @@ if ( $ip_whitelist = 0 ){
     root /tmp;
   }
 }
-4.2 适配PC与移动环境
-当用户从移动端打开PC端baidu.com的场景时，将自动跳转指移动端m.baidu.com，本质上是Nginx可以通过内置变量$http_user_agent，获取到请求客户端的 userAgent，从而知道当前用户当前终端是移动端还是 PC，进而重定向到 H5 站还是 PC 站
+```
 
+-   4.2 适配 PC 与移动环境
+    当用户从移动端打开 PC 端 baidu.com 的场景时，将自动跳转指移动端 m.baidu.com，本质上是 Nginx 可以通过内置变量\$http_user_agent，获取到请求客户端的 userAgent，从而知道当前用户当前终端是移动端还是 PC，进而重定向到 H5 站还是 PC 站
+
+```nginx
 server {
-location / {
-//移动、pc 设备 agent 获取
-if ($http_user_agent ~* '(Android|webOS|iPhone)') {
+  location / {
+    //移动、pc设备agent获取
+    if ($http_user_agent ~* '(Android|webOS|iPhone)') {
       set $mobile_request '1';
+    }
+    if ($mobile_request = '1') {
+      rewrite ^.+ http://m.baidu.com;
+    }
+  }
 }
-if (\$mobile_request = '1') {
-rewrite ^.+ http://m.baidu.com;
-}
-}
-}
-4.3 配置 gzip
-开启 Nginx gzip，压缩后,静态资源的大小会大大的减少,从而可以节约大量的带宽,提高传输效率,带来更好的响应和体验
+```
 
+-   配置 gzip
+
+> 开启 Nginx gzip，压缩后,静态资源的大小会大大的减少,从而可以节约大量的带宽,提高传输效率,带来更好的响应和体验
+
+```nginx
 server{
-gzip on; //启动
-gzip_buffers 32 4K;
-gzip_comp_level 6; //压缩级别，1-10，数字越大压缩的越好
-gzip_min_length 100; //不压缩临界值，大于 100 的才压缩，一般不用改
-gzip_types application/javascript text/css text/xml;
-gzip_disable "MSIE [1-6]\."; // IE6 对 Gzip 不友好，对 Gzip
-gzip_vary on;
+  gzip on; //启动
+  gzip_buffers 32 4K;
+  gzip_comp_level 6; //压缩级别，1-10，数字越大压缩的越好
+  gzip_min_length 100; //不压缩临界值，大于100的才压缩，一般不用改
+  gzip_types application/javascript text/css text/xml;
+  gzip_disable "MSIE [1-6]\."; // IE6对Gzip不友好，对Gzip
+  gzip_vary on;
 }
-4.4 Nginx 配置跨域请求
-当出现 403 跨域错误的时候，还有 No 'Access-Control-Allow-Origin' header is present on the requested resource 报错等，需要给 Nginx 服务器配置响应的 header 参数：
+```
 
+-   Nginx 配置跨域请求
+
+> 当出现 403 跨域错误的时候，还有 No 'Access-Control-Allow-Origin' header is present on the requested resource 报错等，需要给 Nginx 服务器配置响应的 header 参数：
+
+```nginx
 location / {
-add_header Access-Control-Allow-Origin \*;
-add_header Access-Control-Allow-Methods 'GET, POST, OPTIONS';
-add_header Access-Control-Allow-Headers 'DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization';
+  add_header Access-Control-Allow-Origin *;
+  add_header Access-Control-Allow-Methods 'GET, POST, OPTIONS';
+  add_header Access-Control-Allow-Headers 'DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization';
 
-if (\$request_method = 'OPTIONS') {
-return 204;
+  if ($request_method = 'OPTIONS') {
+    return 204;
+  }
 }
-} 5.如何使用 Nginx
+```
+
+5.如何使用 Nginx
 通过在本地使用 Nginx，从启动、更改、重启等环节来介绍 Nginx 的基本使用
 
-如何启动 sudo nginx
-修改 nginx.conf 配置 (具体看你配置位置)vim /usr/local/etc/nginx/nginx.conf
-检查语法是否正常 sudo nginx -t
-重启 nginx sudo nginx -s reload
-创建软链接(便于管理多应用 nginx)
-当我们需要管理多个网站的 nginx，nginx 文件放在一起是最好的管理方式，一般都存在/nginx/conf.d/，我们需要把配置文件丢到 /etc/nginx/conf.d/ 文件夹下，怎样才能使这个配置文件既在程序文件夹下，又在 /etc/nginx/conf.d/文件夹下呢？
+-   如何启动 sudo nginx
+-   修改 nginx.conf 配置 (具体看你配置位置)vim /usr/local/etc/nginx/nginx.conf
+-   检查语法是否正常 sudo nginx -t
+-   重启 nginx sudo nginx -s reload
+-   创建软链接(便于管理多应用 nginx)
 
-假如我们在程序文件夹下有一个 ngxin 配置文件：/home/app/app.nginx.conf 我们需要给这个文件创建一个软链接到 /etc/nginx/conf.d/ 下：
+```
+    ln -s /home/app/app.example.com.nginx.conf /etc/nginx/conf.d/app.nginx.conf
+```
 
-ln -s /home/app/app.example.com.nginx.conf /etc/nginx/conf.d/app.nginx.conf
 这样操作之后，当我们改应用配置文件，/etc/nginx/conf.d/ 下与之对应的配置文件也会被修改，修改后重启 nginx 就能够使新的 ngxin 配置生效了。
