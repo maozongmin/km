@@ -43,20 +43,31 @@
     ```
 
 -   requestIdleCallback 是干什么用的
+    1 秒 60 帧不卡，所以 1 帧时间在 16.6ms 内完成， = 1000ms / 60fps = 16.6ms;
+
+    1 帧需要做的事情：
+
+    -   处理用户的交互
+    -   JS 解析执行
+    -   帧开始。窗口尺寸变更，页面滚去等的处理
+    -   requestAnimationFrame(rAF)
+    -   布局
+    -   绘制
 
     当关注用户体验，不希望因为一些不重要的任务（如统计上报）导致用户感觉到卡顿的话，就应该考虑使用 requestIdleCallback。因为 requestIdleCallback 回调的执行的前提条件是当前浏览器处于空闲状态。
 
     requestAnimationFrame 的回调会在每一帧确定执行，属于高优先级任务，而 requestIdleCallback 的回调则不一定，属于低优先级任务。
 
--   浏览器的渲染原理及流程  
-    1. 根据html文件构建DOM树和CSSOM树。构建DOM树期间，如果遇到JS，阻塞DOM树及CSSOM树的构建，优先加载JS文件，加载完毕，再继续构建DOM树及CSSOM树。
+-   浏览器的渲染原理及流程
+
+    1. 根据 html 文件构建 DOM 树和 CSSOM 树。构建 DOM 树期间，如果遇到 JS，阻塞 DOM 树及 CSSOM 树的构建，优先加载 JS 文件，加载完毕，再继续构建 DOM 树及 CSSOM 树。
 
     2. 构建渲染树（Render Tree）。
 
-    3. 页面的重绘（repaint）与重排（reflow，也有称回流）。页面渲染完成后，若JS操作了DOM节点，根据JS对DOM操作动作的大小，浏览器对页面进行重绘或是重排。
+    3. 页面的重绘（repaint）与重排（reflow，也有称回流）。页面渲染完成后，若 JS 操作了 DOM 节点，根据 JS 对 DOM 操作动作的大小，浏览器对页面进行重绘或是重排。
 
+*   关键渲染路径详述
 
--   关键渲染路径详述
     ```
     处理 HTML 标记并构建 DOM 树。
     处理 CSS 标记并构建 CSSOM 树。
@@ -65,7 +76,7 @@
     将各个节点绘制到屏幕上。
     ```
 
--   避免回流的方式
+*   避免回流的方式
     1. 不要一条一条地修改 DOM 的样式。与其这样，还不如预先定义好 css 的 class，然后修改 DOM 的 className，即将多次改变样式属性的操作合并成一次操作：
         ```
         // 不好的写法
@@ -73,92 +84,96 @@
         top = 10;
         el.style.left = left + "px";
         el.style.top  = top  + "px";
-        el.style.background = '#eee'; 
+        el.style.background = '#eee';
         // 比较好的写法
-        el.className += " theclassname";    
+        el.className += " theclassname";
         ```
-    2. 让要操作的元素进行”离线处理”，处理完后一起更新 
-        - 使用DocumentFragment进行缓存操作,引发一次回流和重绘； 
-        - 使用display:none技术，只引发两次回流和重绘;
-            原理：由于display属性为none的元素不在渲染树中，对隐藏的元素操 作不会引发其他元素的重排。如果要对一个元素进行复杂的操作时，可以先隐藏它，操作完成后再显示。这样只在隐藏和显示时触发2次重排。 
-        - 使用cloneNode(true or false) 和 replaceChild 技术，引发一次回流和重绘； 
-    3. 不要把 DOM 节点的属性值放在一个循环里当成循环里的变量。不然这会导致大量地读写这个结点的属性。 
-    4. 尽可能的修改层级比较低的 DOM节点。当然，改变层级比较底的 DOM节点有可能会造成大面积的 reflow，但是也可能影响范围很小。 
-    因为改变 DOM 树中的一级会导致所有层级的改变，上至根部，下至被改变节点的子节点。这导致大量时间耗费在执行 reflow 上面 
-    5. 将需要多次重排的元素，position属性设为absolute或fixed，这样此元素就脱离了文档流，它的变化不会影响到其他元素为动画的 HTML 元素，例如动画，那么修改他们的 CSS 是会大大减小 reflow 。因为,它们不影响其他元素的布局，所它他们只会导致重新绘制，而不是一个完整回流。这样消耗会更低。 
-    6. 。不要用tables布局的一个原因就是tables中某个元素一旦触发reflow就会导致table里所有的其它元素reflow。在适合用table的场合，可以设置table-layout为auto或fixed，这样可以让table一行一行的渲染，这种做法也是为了限制reflow的影响范围。 
-    7. 避免使用CSS的JavaScript表达式，如果css里有expression，每次都会重新计算一遍。
+    2. 让要操作的元素进行”离线处理”，处理完后一起更新
+        - 使用 DocumentFragment 进行缓存操作,引发一次回流和重绘；
+        - 使用 display:none 技术，只引发两次回流和重绘;
+          原理：由于 display 属性为 none 的元素不在渲染树中，对隐藏的元素操 作不会引发其他元素的重排。如果要对一个元素进行复杂的操作时，可以先隐藏它，操作完成后再显示。这样只在隐藏和显示时触发 2 次重排。
+        - 使用 cloneNode(true or false) 和 replaceChild 技术，引发一次回流和重绘；
+    3. 不要把 DOM 节点的属性值放在一个循环里当成循环里的变量。不然这会导致大量地读写这个结点的属性。
+    4. 尽可能的修改层级比较低的 DOM 节点。当然，改变层级比较底的 DOM 节点有可能会造成大面积的 reflow，但是也可能影响范围很小。
+       因为改变 DOM 树中的一级会导致所有层级的改变，上至根部，下至被改变节点的子节点。这导致大量时间耗费在执行 reflow 上面
+    5. 将需要多次重排的元素，position 属性设为 absolute 或 fixed，这样此元素就脱离了文档流，它的变化不会影响到其他元素为动画的 HTML 元素，例如动画，那么修改他们的 CSS 是会大大减小 reflow 。因为,它们不影响其他元素的布局，所它他们只会导致重新绘制，而不是一个完整回流。这样消耗会更低。
+    6. 。不要用 tables 布局的一个原因就是 tables 中某个元素一旦触发 reflow 就会导致 table 里所有的其它元素 reflow。在适合用 table 的场合，可以设置 table-layout 为 auto 或 fixed，这样可以让 table 一行一行的渲染，这种做法也是为了限制 reflow 的影响范围。
+    7. 避免使用 CSS 的 JavaScript 表达式，如果 css 里有 expression，每次都会重新计算一遍。
 
-*   跨域的方式  
-    - 跨域：当协议、子域名、主域名、端口号中任意一个不相同时，都算作不同域。  
-    - 解决方案：  
-        1. jsonp：缺点是仅支持get方法具有局限性,不安全可能会遭受XSS攻击。
+-   跨域的方式
+    -   跨域：当协议、子域名、主域名、端口号中任意一个不相同时，都算作不同域。
+    -   解决方案：
+        1. jsonp：缺点是仅支持 get 方法具有局限性,不安全可能会遭受 XSS 攻击。
         2. cors：服务端设置 Access-Control-Allow-Origin 就可以开启 CORS
         3. postMessage：
             - 页面和其打开的新窗口的数据传递
             - 多窗口之间消息传递
-            - 页面与嵌套的iframe消息传递
-        4. WebSocket：Websocket是HTML5的一个持久化的协议，它实现了浏览器与服务器的全双工通信，同时也是跨域的一种解决方案。WebSocket和HTTP都是应用层协议，都基于 TCP 协议。但是 WebSocket 是一种双向通信协议，在建立连接之后，WebSocket 的 server 与 client 都能主动向对方发送或接收数据。同时，WebSocket 在建立连接时需要借助 HTTP 协议，连接建立好了之后 client 与 server 之间的双向通信就与 HTTP 无关了。
-        5.  Node中间件代理(两次跨域)：同源策略是浏览器需要遵循的标准，而如果是服务器向服务器请求就无需遵循同源策略。
-        6. nginx反向代理：通过nginx配置一个代理服务器做跳板机，反向代理访问domain2接口，并且可以顺便修改cookie中domain信息，方便当前域cookie写入，实现跨域登录。
+            - 页面与嵌套的 iframe 消息传递
+        4. WebSocket：Websocket 是 HTML5 的一个持久化的协议，它实现了浏览器与服务器的全双工通信，同时也是跨域的一种解决方案。WebSocket 和 HTTP 都是应用层协议，都基于 TCP 协议。但是 WebSocket 是一种双向通信协议，在建立连接之后，WebSocket 的 server 与 client 都能主动向对方发送或接收数据。同时，WebSocket 在建立连接时需要借助 HTTP 协议，连接建立好了之后 client 与 server 之间的双向通信就与 HTTP 无关了。
+        5. Node 中间件代理(两次跨域)：同源策略是浏览器需要遵循的标准，而如果是服务器向服务器请求就无需遵循同源策略。
+        6. nginx 反向代理：通过 nginx 配置一个代理服务器做跳板机，反向代理访问 domain2 接口，并且可以顺便修改 cookie 中 domain 信息，方便当前域 cookie 写入，实现跨域登录。
         7. window.name + iframe
         8. location.hash + iframe
         9. document.domain + iframe
-*   前端的网络安全如何防御（xss，csrf）
-    - XSS的根源主要是没完全过滤客户端提交的数据 ，所以重点是要过滤用户提交的信息。
-        1. 将重要的cookie标记为http only, 这样的话js 中的document.cookie语句就不能获取到cookie了.
-        2. 只允许用户输入我们期望的数据。例如：age用户年龄只允许用户输入数字，而数字之外的字符都过滤掉。
-        3. 对数据进行Html Encode 处理： 用户将数据提交上来的时候进行HTML编码，将相应的符号转换为实体名称再进行下一步的处理
-        4. 过滤或移除特殊的Html标签， 例如: `<script>, <iframe> , < for <, > for >, &quot for`
-        5. 过滤js事件的标签。例如 "onclick=", "onfocus" 等等。
-    -   防止CSRF的解决方案
-        1. 重要数据交互采用POST进行接收，当然是用POST也不是万能的，伪造一个form表单即可破解。
-        2. 使用验证码，只要是涉及到数据交互就先进行验证码验证，这个方法可以完全解决CSRF。但是出于用户体验考虑，网站不能给所有的操作都加上验证码。因此验证码只能作为一种辅助手段，不能作为主要解决方案。
-        3. 验证HTTP Referer字段，该字段记录了此次HTTP请求的来源地址，最常见的应用是图片防盗链。
-        4. 为每个表单添加令牌token并验证
-    -   防止SQL注入的解决方案
+-   前端的网络安全如何防御（xss，csrf）
+    -   XSS 的根源主要是没完全过滤客户端提交的数据 ，所以重点是要过滤用户提交的信息。
+        1. 将重要的 cookie 标记为 http only, 这样的话 js 中的 document.cookie 语句就不能获取到 cookie 了.
+        2. 只允许用户输入我们期望的数据。例如：age 用户年龄只允许用户输入数字，而数字之外的字符都过滤掉。
+        3. 对数据进行 Html Encode 处理： 用户将数据提交上来的时候进行 HTML 编码，将相应的符号转换为实体名称再进行下一步的处理
+        4. 过滤或移除特殊的 Html 标签， 例如: `<script>, <iframe> , < for <, > for >, &quot for`
+        5. 过滤 js 事件的标签。例如 "onclick=", "onfocus" 等等。
+    -   防止 CSRF 的解决方案
+        1. 重要数据交互采用 POST 进行接收，当然是用 POST 也不是万能的，伪造一个 form 表单即可破解。
+        2. 使用验证码，只要是涉及到数据交互就先进行验证码验证，这个方法可以完全解决 CSRF。但是出于用户体验考虑，网站不能给所有的操作都加上验证码。因此验证码只能作为一种辅助手段，不能作为主要解决方案。
+        3. 验证 HTTP Referer 字段，该字段记录了此次 HTTP 请求的来源地址，最常见的应用是图片防盗链。
+        4. 为每个表单添加令牌 token 并验证
+    -   防止 SQL 注入的解决方案
         1. 对用户的输入进行校验，使用正则表达式过滤传入的参数
-        2. 使用参数化语句，不要拼接sql，也可以使用安全的存储过程
+        2. 使用参数化语句，不要拼接 sql，也可以使用安全的存储过程
         3. 不要使用管理员权限的数据库连接，为每个应用使用权限有限的数据库连接
         4. 检查数据存储类型
         5. 重要的信息一定要加密
-*   cookies 的保护方式
+-   cookies 的保护方式
 
-*   浏览器的缓存机制
+    优先使用渲染层合并属性、控制层数量
 
-*   什么文件用强缓存，什么文件用协商缓存
+    对用户输入事件的处理函数去抖动（移动设备）
 
-*   React-Native 的原理，优缺点
+```
 
-*   react 的虚拟 dom 和 diff 描述
+-   避免回流的方式
+    display: none 改成 visibility: false
+-   跨域的方式
 
-*   react 渲染优化（class，hook）
+-   前端的网络安全如何防御（xss，csrf）
 
-*   react 的 context 的使用场景
+-   cookies 的保护方式
 
-*   node 和后端知识
+-   浏览器的缓存机制
 
-*   mysql 和 mongo 的区别，使用情景
+-   什么文件用强缓存，什么文件用协商缓存
 
-*   node 有什么情况会导致内存溢出
+-   React-Native 的原理，优缺点
 
-*   node 的内存分配
+-   react 的虚拟 dom 和 diff 描述
 
-*   event loop（浏览器和 node）
+-   react 渲染优化（class，hook）
 
-*   开放性题目
+-   react 的 context 的使用场景
 
-*   首屏优化方案
+-   node 和后端知识
 
-*   在 App 中如何实现前端资源离线缓存（方案）
+-   mysql 和 mongo 的区别，使用情景
 
-*   算法
+-   node 有什么情况会导致内存溢出
 
-const arr = [101,19,12,51,32,7,103,8];
+-   node 的内存分配
 
-1.找出连续最大升序的数量
+-   event loop（浏览器和 node）
 
-2.找出不连续最大升序的数量
+-   首屏优化方案
+
+-   在 App 中如何实现前端资源离线缓存（方案）
 
 ## 二面-技术面
 
@@ -441,6 +456,12 @@ udp
 哈希表
 
 动态规划（一般为加分题）
+
+```
+
+```
+
+```
 
 ```
 
