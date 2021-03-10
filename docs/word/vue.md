@@ -4,6 +4,7 @@
 
 Vue 的组件中的 props 尽量以下列方式书写：  
 正确写法：
+
 ```
 props: {
     pro1: {
@@ -23,20 +24,25 @@ props: {
     }
 }
 ```
+
 不推荐写法：
+
 ```
 Props: ['pro1', 'pro2']
 ```
+
 ## 子路由高亮父路由
+
 ::: tip 常用于菜单高亮
-按下图配置，可以跳转到子路由的时候高亮父级路由的router-link标签上的active-class
+按下图配置，可以跳转到子路由的时候高亮父级路由的 router-link 标签上的 active-class
+
 ```
 <!-- active-class会触发显示 -->
 <router-link active-class="menu-active" :to="{name: 'v4-test'}">测试</router-link>
 ```
-:::
-![图片alt](../.vuepress/public/img/1.png "图片title")
 
+:::
+![图片alt](../.vuepress/public/img/1.png '图片title')
 
 ## npm run dev 无法启动
 
@@ -60,12 +66,15 @@ console.log(process.env.NODE_ENV)
 "build": "set NODE_ENV=production && webpack --config build/dist.js --progress --colors",
 ```
 
-## node-sass构建失败
-node-sass构建失败，重新构建执行：  
+## node-sass 构建失败
+
+node-sass 构建失败，重新构建执行：  
 npm rebuild node-sass
 
 ## 拖放事件
+
 拖放事件：必须给拖放区元素添加 dragover.prevent，才能使 drop 事件正确执行
+
 ```
 <div style="border:1px solid red;height: 100px;width:300px;" @drop="drop" @dragover.prevent>
     <p style="color:#ccc;">{{this.dropData}}</p>
@@ -73,7 +82,8 @@ npm rebuild node-sass
 ```
 
 ## 路由跳转一直带上参数
-``` js
+
+```js
 router.beforeEach((to, from, next) => {
     if (Object.keys(to.query).length) {
         next();
@@ -88,7 +98,9 @@ router.beforeEach((to, from, next) => {
     }
 });
 ```
+
 ## 优化点细节
+
 ```
 1. vFor和vIf不要一起使用
 2. vFor 是不推荐使用 index 下标来作为 key 的值
@@ -128,10 +140,10 @@ router.beforeEach((to, from, next) => {
     }
 11. GZIP
     这个东西需要后端进行配置，当然，如果你有操作 Nginx 的权限的话，那么可以自己开启
-    
+
 12. CDN + Gzip + Prerender
     https://blog.csdn.net/haochuan9421/article/details/82962835
 ```
 
 13. vue2 eslint 如何自动修正
-https://www.jianshu.com/p/bfc13fb6c6ed
+    https://www.jianshu.com/p/bfc13fb6c6ed
