@@ -42,14 +42,14 @@
     所以，你现在明白为何<script>最好放底部，<link>最好放头部，如果头部同时有<script>与<link>的情况下，最好将<script>放在<link>上面
     ```
 
--   requestIdleCallback 是干什么用的
+-   requestIdleCallback 是干什么用的？  
     1 秒 60 帧不卡，所以 1 帧时间在 16.6ms 内完成， = 1000ms / 60fps = 16.6ms;
 
     1 帧需要做的事情：
 
     -   处理用户的交互
     -   JS 解析执行
-    -   帧开始。窗口尺寸变更，页面滚去等的处理
+    -   帧开始。窗口尺寸变更，页面滚动等的处理
     -   requestAnimationFrame(rAF)
     -   布局
     -   绘制

@@ -76,8 +76,10 @@ console.log(world()) //Hello World
 ```
 
 ## npm 引用本地 node 包
-使用`npm install ../test-jquery`安装本地包，安装前确认项目中node_modules没有同名的包,如果有，请删除。
-> 然后在package.json 中可以看到
+
+使用`npm install ../test-jquery`安装本地包，安装前确认项目中 node_modules 没有同名的包,如果有，请删除。
+
+> 然后在 package.json 中可以看到
 > "test-jquery": "file:../../test-jquery"
 
 ## koa
@@ -146,13 +148,15 @@ npm config set registry https://registry.npm.taobao.org
 npm config get registry
 ```
 
-## 设置npm的proxy代理
+## 设置 npm 的 proxy 代理
+
 ```
 npm config set proxy http://generalichina\qtmp003:Aa123456
 npm confit set https-proxy http://username:password@server:port
 ```
 
-## 取消npm的proxy代理
+## 取消 npm 的 proxy 代理
+
 ```
 npm config delete http-proxy
 npm config delete https-proxy
@@ -167,23 +171,27 @@ npm install -g npm-check-updates
 ncu -u
 ```
 
-## 本地设置全局npm命令
+## 本地设置全局 npm 命令
+
 在需要链接到全局的文件夹下使用 `npm link`  
-执行命令默认为name，也就是下面的vite，执行入口为bin，如果bin为对象，那么执行命令为bin的对象名，也就是bin下的vite
-``` json
+执行命令默认为 name，也就是下面的 vite，执行入口为 bin，如果 bin 为对象，那么执行命令为 bin 的对象名，也就是 bin 下的 vite
+
+```json
 {
-  "name": "vite",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "bin": {
-    "vite": "./bin/www.js"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+    "name": "vite",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "bin": {
+        "vite": "./bin/www.js"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
 }
 ```
+
+<!-- npm install --global windows-build-tools -->
