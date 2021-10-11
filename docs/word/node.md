@@ -82,6 +82,10 @@ console.log(world()) //Hello World
 > 然后在 package.json 中可以看到
 > "test-jquery": "file:../../test-jquery"
 
+## npm 依赖包不一致问题
+
+使用`npm list >>npmlist` 将依赖对应结果导出成npmlist文件。在其中查找对应异常的包
+
 ## koa
 
 ### 本地 demo
