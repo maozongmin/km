@@ -120,3 +120,29 @@ exec (execute)
 ## Window 中的 Docker 拉取 Mysql 镜像 并在本地 Navicate 链接
 
 <a href="https://www.cnblogs.com/afeige/p/10698155.html">Window 中的 Docker 拉取 Mysql 镜像 并在本地 Navicate 链接</a>
+
+## 关键点总结
+1. Docker 通过Linux Namespace技术对系统资源进行隔离和虚拟化，不同的容器进程绑定不同的命名空间，每个进程只能访问自己命名空间下的资源（文件系统、网络资源、进程号等）
+2. Docker 的网络配置，本质上就是通过 Network Namespace 对 容器 和 宿主的 网络资源进行隔离
+3. Docker 网络配置有 4 种模式，在启动容器进程时指定：
+   - Host 模式，--net="host"，容器和宿主共享同一个 Network Namespace，容器可以直接访问宿主的网络资源，容器内的网络信息（网卡、IP、路由等）和宿主一致
+   - Bridge 模式，--net="bridge" -p "Host Port:Container Port"，Docker 为容器分配单独的 Network Namespace，并为容器初始化路由，IP 等基础网络配置，容器和宿主间通过 docker0 网桥进行通信，启动时可以通过 -p 参数指定 宿主 和 容器 的端口映射
+   - Container 模式，--net="container"，新启动的容器和一个旧的容器共享 Network Namespace，新容器可以直接访问旧容器的网络资源
+   - None 模式，--net="none"，Docker 为容器分配单独的 Network Namespace，但是不为其初始化基础网络配置，需要自己手动配置路由表，网卡等
+## 命令
+- 查看 Docker 版本：docker -v
+- 从仓库获取镜像：docker pull [镜像地址]:[版本]  
+   例如 docker pull docker.oa.com:8080/public/docker-hello-world:latest
+- 查看本地镜像列表：docker images
+- 以 Host 模式启动容器：docker run -d --rm --net="host" [镜像]
+- 以 Bridge 模式启动容器：docker run -d --rm -p "[HostPort]:[ContainerPort]" --net="bridge" [镜像]  
+   其中 HostPort 是宿主端口，ContainerPort 是容器端口。  
+   例如：docker run -d --rm --net="bridge" -p "3004:3003" docker.oa.com:8080/public/docker-hello-world
+- 查看运行中的容器列表：docker ps
+- 查看容器日志：docker logs [容器 ID]
+- 进入容器：docker exec -it [容器 ID] bash
+- 从容器中退出：exit
+- 停止容器：docker stop [容器 ID]
+
+## docker 安装软件
+- `apt-get update && apt-get install procps` 示例： 安装ps

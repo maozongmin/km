@@ -11,6 +11,21 @@
 6. 掌握实现方法
 7. 解决了什么问题
 
+通用能力：
+- <input type="checkbox" checked/>沟通能力
+- <input type="checkbox" checked/>执行力
+- <input type="checkbox" checked/>解决问题
+- <input type="checkbox" checked/>项目管理能力
+- <input type="checkbox" checked/>学习能力
+- <input type="checkbox" checked/>创新能力
+- <input type="checkbox" checked/>团队协作
+- <input type="checkbox" checked/>客户导向
+- <input type="checkbox" checked/>成就导向
+- <input type="checkbox" checked/>积极乐观
+
+<!-- 通用能力、专业支持、专业技能、组织影响力
+带项目、写文档、讲课程、轮岗位、培养人 -->
+
 <a href="https://valine.js.org/quickstart.html" target="_blank">valine 文档</a>  
 <a href="https://leancloud.cn/dashboard/applist.html#/apps" target="_blank">评论后台</a>
 

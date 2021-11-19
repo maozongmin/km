@@ -376,3 +376,9 @@ location / {
 ```
 
 这样操作之后，当我们改应用配置文件，/etc/nginx/conf.d/ 下与之对应的配置文件也会被修改，修改后重启 nginx 就能够使新的 ngxin 配置生效了。
+
+### linux快速查看nginx的安装路径
+- `whereis nginx`
+
+### docker上启动nginx,并配置修改nginx的配置文件
+- https://www.cnblogs.com/zfding/p/11429695.html
