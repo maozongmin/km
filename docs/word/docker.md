@@ -73,23 +73,37 @@ docker exec [OPTIONS] CONTAINER COMMAND [ARG...]    // 进入容器执行bash do
 
 ## Dockerfile
 
-::: 介绍
+### 介绍
 文件中包含 Linux 命令，`docker`通过读取文件中的命令来组件镜像  
 一般四部分： `基础镜像信息、维护者信息、镜像操作指令、容器启动时执行指令`
 
-:::
+Dockerfile常用指令
 
-> `FROM`: 指定基础镜像，必须为第一个命令
+- `FROM`: 指定基础镜像，必须为第一个命令
 
-```
-格式：
-    FROM <image>
-    FROM <image>:<tag>
-    FROM <image>@<digest>
+    ```
+    格式：
+        FROM <image>
+        FROM <image>:<tag>
+        FROM <image>@<digest>
 
-示例：
-    FROM centos:7.0
-```
+    示例：
+        FROM centos:7.0
+    ```
+- RUN 执行命令  
+
+    `docker run -d -p 8081:80 mao/ubuntu`
+
+- ADD 添加文件  
+- COPY 拷贝文件  
+- CMD 执行命令  
+- EXPOSE 暴露接口  
+- WORKDIR 制定路径  
+- MAINTAINER 维护者  
+- ENV 设定环境变量  
+- ENTRYPOINT 容器入口  
+- USER    制定用户  
+- VOLUME  提供独立于容器之外的持久化存储   
 
 ## 英文缩写
 
@@ -146,3 +160,26 @@ exec (execute)
 
 ## docker 安装软件
 - `apt-get update && apt-get install procps` 示例： 安装ps
+
+## docker 笔记
+复制本地文件进入docker 
+docker cp index.html 容器id://usr/share/nginx/html 
+
+保存改动为最新的image
+docker commit -m 'fun' 容器id 自定义image名称
+
+通过dockerfile自创docker镜像
+
+### 检查容器，获取容器信息
+docker inspect 容器id
+
+### cd / 和 ～ 的区别
+cd / 进入根目录  
+cd ~ 进入用户家目录，比如root用户就进入到/root，比如zzz用户，就进入到/home/zzz
+cd /Users/用户名 就等于 cd ～
+
+### 容器挂载
+- 将本地的html目录和容器内的html目录进行同步
+docker run -p 80:80 -d -v $PWD/html:/usr/share/nginx/html nginx
+  
+docker create ：创建一个新的容器但不启动它
