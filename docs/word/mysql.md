@@ -23,3 +23,24 @@ ALTER DATABASE [数据库名]
 
 - 显示数据库默认的存储引擎
 `SHOW VARIABLES LIKE 'storage_engine%';`
+
+- 创建表
+```sql
+create table tb_admin(
+    id int auto_increment primary key,
+    user varchar(30) not null,
+    password varchar(30) not null,
+    createtime datetime
+)
+```
+
+- 查看表结构
+```sql
+show columns from tb_admin from db_admin;
+-- 或者
+describe tb_admin;
+-- 简写
+desc tb_admin;
+-- 查看某一列的结构信息
+desc tb_admin id;
+```
