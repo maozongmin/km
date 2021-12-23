@@ -44,3 +44,28 @@ desc tb_admin;
 -- 查看某一列的结构信息
 desc tb_admin id;
 ```
+- 数据库插入数据
+```sql
+INSERT INTO runoob_tbl 
+    -> (runoob_title, runoob_author, submission_date)
+    -> VALUES
+    -> ("学习 PHP", "小猫哥", NOW());
+```
+
+- 数据库查询数据
+``` sql
+SELECT column_name,column_name
+FROM table_name
+[WHERE Clause]
+[LIMIT N][ OFFSET M]
+```
+
+- 数据表更新数据
+`UPDATE runoob_tbl SET runoob_title='学习 C++' WHERE runoob_id=3;`
+
+- 数据表删除数据
+`DELETE FROM runoob_tbl WHERE runoob_id=3;`
+
+- 数据表的LIKE查询数据
+    * 查询所有com结尾的数据
+`SELECT * from runoob_tbl  WHERE runoob_author LIKE '%COM'`
