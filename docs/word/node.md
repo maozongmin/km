@@ -166,6 +166,12 @@ npm config delete http-proxy
 npm config delete https-proxy
 ```
 
+## 清理缓存 
+
+```
+npm cache clean -f
+```
+
 ## 升级 package.json 的包
 
 <a href="https://github.com/raineorshine/npm-check-updates" target="_blank">npm-check-updates</a> 工具
@@ -199,3 +205,12 @@ ncu -u
 ```
 
 <!-- npm install --global windows-build-tools -->
+
+## linux卸载nodejs
+1.先卸载npm
+
+`sudo npm uninstall npm -g`
+
+2.卸载node
+
+`yum remove nodejs npm -y`

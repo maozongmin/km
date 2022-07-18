@@ -156,3 +156,31 @@ npm install grunt # 本地安装
 npm1 install -g grunt-cli # 全局安装
 ```
 
+## du 命令查看空间
+du命令的英文全称是“Disk Usage”，即用于查看磁盘占用空间的意思。但是与df命令不同的是du命令是对文件和目录磁盘使用的空间的查看，而不是某个分区。
+
+语法格式：du [参数] [文件]
+
+常用参数：  
+-a
+显示目录中所有文件大小
+
+-k
+以KB为单位显示文件大小
+
+-m
+以MB为单位显示文件大小
+
+-g
+以GB为单位显示文件大小
+
+-h
+以易读方式显示文件大小
+
+-s
+仅显示总计
+
+示例：显示src的文件夹大小 `du -sh src` 
+
+## linux复制文件夹忽略,Linux copy时排除某文件/目录
+<a href="https://blog.csdn.net/weixin_42370320/article/details/116836359?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1.pc_relevant_paycolumn_v3&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1.pc_relevant_paycolumn_v3&utm_relevant_index=2">linux复制文件夹忽略,Linux copy时排除某文件/目录</a>

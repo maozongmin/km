@@ -72,3 +72,8 @@ document.body.appendChild(canvas);
 
 ## js获取本地图片并转换成base64格式
 <a href="https://blog.csdn.net/weixin_40431771/article/details/89380316">js获取本地图片并转换成base64格式</a>
+
+
+## 浏览器内核（渲染进程）
+- GUI更新则会被保存在一个队列中等到JS引擎线程空闲时立即被执行  
+<img src="../.vuepress/public/img/browser_line.png" />
