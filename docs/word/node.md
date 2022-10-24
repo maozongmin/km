@@ -214,3 +214,8 @@ ncu -u
 2.卸载node
 
 `yum remove nodejs npm -y`
+
+## 安装nvm进行切换node版本
+- 提示：安装路径不能包含空格
+- <a href="https://blog.csdn.net/QWERTYQ16/article/details/124497532" target="_blank">nvm的简介、安装、使用</a>
+- <a href="https://blog.csdn.net/sunshineGGB/article/details/124249489" target="_blank">nvm use 版本号报错 </a>
