@@ -22,6 +22,8 @@
 ```
     git config --global user.name  "maozongmin"
     git config --global user.email "861463757@qq.com"
+    // 配置密码,输入下面命令，然后pull，输入账号密码，后续再pull就不会要求输入了
+    git config --global credential.helper store
 ```
 
 ## 创建一个新仓库
