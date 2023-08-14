@@ -184,3 +184,18 @@ du命令的英文全称是“Disk Usage”，即用于查看磁盘占用空间�
 
 ## linux复制文件夹忽略,Linux copy时排除某文件/目录
 <a href="https://blog.csdn.net/weixin_42370320/article/details/116836359?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1.pc_relevant_paycolumn_v3&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1.pc_relevant_paycolumn_v3&utm_relevant_index=2">linux复制文件夹忽略,Linux copy时排除某文件/目录</a>
+
+## linux adduser 默认密码
+- 在 Linux 系统中，通过 adduser 命令创建的用户默认是没有密码的，需要使用 passwd 命令为其设置密码。如果你希望创建一个用户并且同时设置其初始密码，可以使用 useradd 和 echo 命令配合实现：
+$ sudo useradd -m username
+$ echo "username:password" | sudo chpasswd
+
+## CentOS──xxx is not in the sudoers file解决方法
+- 1）进入超级用户模式。也就是输入"su -",系统会让你输入超级用户密码，输入密码后就进入了超级用户模式。（当然，你也可以直接用root用） 
+- 2）添加文件的写权限。也就是输入命令"chmod u+w /etc/sudoers"。 
+- 3）编辑/etc/sudoers文件。也就是输入命令"vim /etc/sudoers",输入"i"进入编辑模式，找到这一 行："root ALL=(ALL) ALL"在起下面添加"xxx ALL=(ALL) ALL"(这里的xxx是你的用户名)，然后保存（就是先按一 下Esc键，然后输入":wq"）退出。 
+
+## 切换到root用户
+使用命令：`su -root密码` 没有密码用`su -`
+
+## 切换到指定用户

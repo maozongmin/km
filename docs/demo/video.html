@@ -1,0 +1,25 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 新建blob文件
+        let newBlob = new Blob(['weqw阿斯顿撒多撒'], { type: 'text/plain' });
+        console.log(newBlob)
+
+
+        const blob = new Blob([1,2,3,4,5]);
+        const reader = new FileReader(); 
+        //借助FileReader对象reader.onload = function() {    console.log(this.result);}reader.readAsArrayBuffer(blob); //这里将blob转化成了ArrayBuffer类型
+        reader.onload = function() {   
+             console.log(this.result)
+        }
+        reader.readAsArrayBuffer(blob);
+    </script>
+    
+</body>
+</html>

@@ -219,3 +219,6 @@ ncu -u
 - 提示：安装路径不能包含空格
 - <a href="https://blog.csdn.net/QWERTYQ16/article/details/124497532" target="_blank">nvm的简介、安装、使用</a>
 - <a href="https://blog.csdn.net/sunshineGGB/article/details/124249489" target="_blank">nvm use 版本号报错 </a>
+
+## 将自定义的组件库软连接到项目中的node_modules
+mklink /d E:\workspace\xxxxx\yui E:\workspace\yui
