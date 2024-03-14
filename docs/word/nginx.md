@@ -151,6 +151,9 @@ taskkill /f /im notepad.exe
 taskkill /f /pid 2152
 ```
 
+### linux 关闭nginx
+<a href="https://cloud.tencent.com/developer/article/2118655">https://cloud.tencent.com/developer/article/2118655</a>
+
 ## nginx 那些事
 
 <img src="../.vuepress/public/img/nginx.png" />
